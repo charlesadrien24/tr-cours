@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<title>Programmation web</title>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<link href="lib/w3.css" rel="stylesheet">
+<link href="lib/quizz.css" rel="stylesheet">
+<link href="http://www.informatics-tech.com/highlighter/prettify.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
+<script src="http://www.informatics-tech.com/highlighter/prettify.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+<style>
+    h5 {
+        font-weight: bold;
+        margin: 10px;
+    }
+
+    h4,
+    h3 {
+        margin: 15px;
+    }
+
+    .rendu {
+        border: 1px solid black;
+    }
+
+    .quizlib-question-answers ul {
+        list-style: none;
+    }
+
+    li xmp {
+        display: inline;
+    }
+
+    /* CSS Simple Pre Code */
+    pre {
+        background: #333;
+        white-space: pre;
+        word-wrap: break-word;
+        overflow: auto;
+    }
+
+    pre.code {
+        margin: 20px 25px;
+        border-radius: 4px;
+        border: 1px solid #292929;
+        position: relative;
+    }
+
+    pre.code label {
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: 13px;
+        color: #ddd;
+        position: absolute;
+        left: 1px;
+        top: 15px;
+        text-align: center;
+        width: 60px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        pointer-events: none;
+    }
+
+    pre.code code {
+        font-family: "Inconsolata", "Monaco", "Consolas", "Andale Mono", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+        display: block;
+        margin: 0 0 0 60px;
+        padding: 15px 16px 14px;
+        border-left: 1px solid #555;
+        overflow-x: auto;
+        font-size: 13px;
+        line-height: 19px;
+        color: #ddd;
+    }
+
+    /* pre::after {
+        content: "double click to selection";
+        padding: 0;
+        width: auto;
+        height: auto;
+        position: absolute;
+        right: 18px;
+        top: 14px;
+        font-size: 12px;
+        color: #ddd;
+        line-height: 20px;
+        overflow: hidden;
+        -webkit-backface-visibility: hidden;
+        transition: all 0.3s ease;
+    } */
+
+    pre .str {
+        color: #ffffff;
+    }
+
+    pre .typ {
+        color: #ffffff;
+    }
+
+    pre:hover::after {
+        opacity: 0;
+        visibility: visible;
+    }
+
+    pre.code-css code {
+        color: #ffffff;
+         !important
+    }
+
+    pre.code-html code {
+        color: #ffffff;
+    }
+
+    pre.code-javascript code {
+        color: #ffffff;
+    }
+
+    pre.code-jquery code {
+        color: #ffffff;
+    }
+
+
+
+    .redux_quizz input[type=text] {
+        width: 60px;
+    }
+
+    table th {
+        text-align: center;
+    }
+
+    .linenums li {
+        list-style-type: decimal;
+        background: black;
+    }
+
+    .sous-menu {
+        border: 1px solid black;
+    }
+
+    button {
+        margin-bottom: 20px;
+    }
+
+    table tr th,
+    td {
+        border: 1px solid black;
+    }
+
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-family: "Poppins", sans-serif
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+    h1.w3-xxxlarge {
+        margin-top: 15px;
+    }
+
+    .w3-half img {
+        margin-bottom: -6px;
+        margin-top: 16px;
+        opacity: 0.8;
+        cursor: pointer
+    }
+
+    .w3-half img:hover {
+        opacity: 1
+    }
+
+    .ajout-oga {
+        background-color: green;
+    }
+
+    .todo-oga {
+        background-color: red;
+    }
+
+    pre.enLigne {
+        display: inline;
+    }
+
+    .nicho-modif {
+        border-left: Lime 5px solid;
+        padding-left: 5px;
+        background: yellow;
+    }
+
+    tt {
+        background-color: #ffd6cc;
+    }
+
+    /* Keyboard key style */
+    kbd {
+        font-size: 0.7em;
+        border: 1px solid gray;
+        box-shadow: 1px 0 1px 0 #eee, 0 2px 0 2px #ccc, 0 2px 0 3px #444;
+        border-radius: 3px;
+        margin: 2px 3px;
+        padding: 1px 5px;
+    }
+</style>
+
+<body>
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" id="mySidebar"
+        style="z-index:3;width:300px;font-weight:bold;"><br>
+        <a class="w3-button w3-hide-large w3-display-topleft" href="javascript:void(0)" onclick="w3_close()"
+            style="width:100%;font-size:22px">Close Menu</a>
+        <div class="w3-container">
+            <h3 class="w3-padding-64"><b>IUT Info Bordeaux</b></h3>
+        </div>
+        <div class="w3-bar-block ">
+
+
+            <div class="w3-bar-block sous-menu">
+                <a class="w3-bar-item w3-button w3-hover-white aqui" href="#exo1" onclick="w3_close()"> exercice 1</a>
+                <a class="w3-bar-item w3-button w3-hover-white aqui" href="#exo2" onclick="w3_close()"> exercice 2</a>
+
+
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Top menu on small screens -->
+    <header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+        <a class="w3-button w3-red w3-margin-right" href="javascript:void(0)" onclick="w3_open()">&#9776;</a>
+        <span>IUT Info Bdx</span>
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" id="myOverlay" onclick="w3_close()" style="cursor:pointer"
+        title="close side menu"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+        <!-- Header -->
+        <div class="w3-container" id="showcase" style="margin-top:80px">
+            <h1 class="w3-jumbo"><b>Séance&nbsp;5</b> : Exercices </h1>
+            <hr class="w3-round" style="width:50px;border:5px solid red">
+        </div>
+
+
+
+        <!-- Photo grid (modal) -->
+
+
+
+        <!-- Modal for full size images on click-->
+        <div class="w3-modal w3-black" id="modal01" onclick="this.style.display='none'" style="padding-top:0">
+            <span class="w3-button w3-black w3-xxlarge w3-display-topright">&times;</span>
+            <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+                <img class="w3-image" id="img01">
+                <p id="caption"></p>
+            </div>
+        </div>
+
+        <div class="w3-container" id="git" style="margin-top:5px">
+
+
+            <h2 class="comp">Compétences à acquérir lors de la séance 5 : </h2>
+            <p>Cette séance vise à vous faire travailler sur les compétences acquises lors des dernières séances
+            </p>
+
+            <ul>
+                <li>Savoir créer des sélecteurs optimisés</li>
+                <li>Connaitre les règles de positionnement dans le flux</li>
+
+            </ul>
+
+
+            <h2 class="aqui" id="exo1">Exercice 1</h2>
+
+
+
+            <div style="background-color: rgb(200, 50, 100);color:white">Question 1</div>
+            <p>
+                En vous inspirant de l’image ci-dessous, créez un fichier HTML contenant un titre, une phrase et
+                affichant 3 images. Chaque image devra correspondre à une balise <tt>div</tt> qui, pour le moment, ne
+                sera affectée à aucune classe de style.
+            </p>
+            <p>
+                <img src="img/seance5/q1.png" alt="">
+            </p>
+            <div style="background-color: rgb(200, 50, 100);color:white">Question 2</div>
+            <p>
+                En vous inspirant de l’image ci-dessous, écrivez le CSS répondant aux contraintes suivantes :
+            </p>
+            <ul>
+                <li>Le <tt>body</tt> de la page a un fond noir, un texte de couleur blanche, et une hauteur de 500
+                    pixels</li>
+                <li>Les images n'ont pas de bordure</li>
+            </ul>
+            <p>
+                La classe <tt>thumb</tt> permettra de gérer l’affichage en mode vignette. Une image sera intégrée dans
+                une <tt>div</tt> de classe <tt>thumb</tt>. Cette <tt>div</tt> aura un mode d’affichage de type
+                <tt>inline block</tt>, une <tt>marge</tt> de
+                1px une <tt>largeur</tt> de 100px et une <tt>hauteur</tt> de 75px. Une fois ces attributs créés,
+                affectez aux 3 divisions
+                la classe <tt>thumb</tt>.
+                L’image ci-dessous illustre le résultat que vous devez obtenir :
+            </p>
+            <p><img src="img/seance5/q2.png" alt=""></p>
+
+            <div style="background-color: rgb(200, 50, 100);color:white">Question 3</div>
+            <p>
+                Les caractéristiques décrites dans <tt>thumb</tt> ne s’appliquent pas aux images (mais uniquement à la
+                division).
+                Modifiez le CSS afin qu’une balise <tt>img</tt> contenue dans une <tt>div</tt> de classe <tt>thumb</tt>
+                ait les caractéristiques suivantes :
+            </p>
+            <ul>
+                <li>marge à 0</li>
+                <li>padding à 0</li>
+                <li>une largeur fixe de 100px</li>
+                <li>une hauteur fixe de 75px</li>
+            </ul>
+            <p>
+                Une fois les modifications réalisées, votre page doit ressembler à l’image ci-dessous :
+            </p>
+            <p><img src="img/seance5/q3.png" alt=""></p>
+
+
+
+            <div style="background-color: rgb(200, 50, 100);color:white">Question 4</div>
+            <p>
+                Afin de permettre l’affichage “en grand” de l’image vignette lorsque la souris passe dessus,
+            </p>
+            <ul>
+                <li>modifiez la classe thumb pour que la souris s’affiche sous forme de pointeur,</li>
+                <li>Lorsque la souris est sur l’une des div, décalez l’image vers le bas de la bonne hauteur et fixez la
+                    largeur à 300px et la hauteur à 225px.</li>
+            </ul>
+            <p>
+                Petit problème : Les images s’affichent en dessous mais les vignettes se décalent vers le bas.
+            </p>
+
+            <p>
+                <video controls src="videos/seance5/video1.m4v" width="80%"></video>
+            </p>
+
+
+            <div style="background-color: rgb(200, 50, 100);color:white">Question 5</div>
+            <p>
+                Utilisez la propriété <tt>vertical-align </tt> utilisable sur les <tt>inline-block </tt> pour aligner en
+                haut les vignettes.
+                Vous devez obtenir l’affichage suivant :
+            </p>
+
+            <p>
+                <video controls src="videos/seance5/video2.m4v" width="80%"></video>
+            </p>
+
+
+
+
+            <h2 class="aqui" id="exo2">Exercice 2</h2>
+            <p>Dans cet exercice, vous allez créer un menu déroulant. La première étape consiste à créer :
+                <ul>
+                    <li>Une zone de navigation à laquelle vous donnerez l’identifiant <tt>menu</tt>,</li>
+                    <li>Une liste d’items en utilisant les balises <tt>ul</tt>, <tt> li</tt>. </li>
+                </ul>
+            </p>
+
+            <p>Le rendu final correspond à celui de la vidéo ci-dessous</p>
+
+            <p>
+                <video controls src="videos/seance5/video3.m4v" width="80%"></video>
+            </p>
+            <div style="background-color: rgb(200, 50, 100);color:white">Question 6</div>
+
+            <p>Créer le code html permettant d'obtenir le résultat suivant :</p>
+            <p>
+                <img src="img/seance5/Q6.png" alt="">
+            </p>
+
+
+            <div style="background-color: rgb(200, 50, 100);color:white">Question 7</div>
+
+
+            <ul>
+                <li>Identifiez les sélecteurs permettant d’obtenir le résultat désiré </li>
+                <li>Utilisez les outils de développement de votre navigateur pour modifier les propriétés des attributs
+                    (margin, padding, text-decoration, ...) et observez les modifications.</li>
+            </ul>
+
+            <pre class="prettyprint  "><xmp>/* ul pricipal de la zone menu */ 
+#_____     _____ {
+     margin: 0; padding: 0; list-style-type: none; text-align: center; 
+    } 
+/* style de tous les li de la zone menu */ 
+#_____     _____ {
+    float:left;     margin: auto;     padding: 0;     background-color: green; 
+    } 
+/* style de tous les liens dans un li contenu dans la zone menu */ 
+#_____   _____   _____   { 
+    display: block; width: 100px; color: white; text-decoration: none; padding: 5px; 
+    } 
+/* style de tous les liens survolés dans un li contenu dans la zone menu */ 
+#_____   _____  _____   {
+    color: #FFD700; 
+    } 
+/* arrêt écoulement autour des float pour le bloc qui suit */    
+_____   {
+    clear: both; 
+} </xmp></pre>
+
+            <p><img src="img/seance5/Q7.png" alt=""></p>
+
+            <div style="background-color: rgb(200, 50, 100);color:white">Question 9</div>
+            <p>
+                A ce stade, le sous menu est constamment affiché (alors qu’on le souhaite déroulant). La première étape
+                consiste à faire disparaître, par défaut, ce sous menu.
+            </p>
+            Pour cela il faut initialiser à une valeur précise de l’attribut display.
+
+
+            Complétez le code suivant afin de parvenir à l’affichage désiré.
+
+            <pre class="prettyprint  "><xmp>/* sous menu non affiché par défaut*/
+# _____ _____ _____ { 
+    display: _____ ; 
+}</xmp></pre>
+            <p><img src="img/seance5/Q8.png" alt=""></p>
+
+
+
+
+            <div style="background-color: rgb(200, 50, 100);color:white">Question 10</div>
+            <p>
+                Pour afficher le sous menu au passage de la souris, il faut utiliser la pseudo-classe <tt>:hover</tt>.
+
+                Complétez le code suivant afin de parvenir à l’affichage désiré.
+            </p>
+            <pre class="prettyprint  "><xmp>/* affichage du sous menu au survol*/ 
+#_____   li:_____   _____   {
+    display:   _____   ;
+} </xmp></pre>
+
+
+            <p><img src="img/seance5/Q10.png" alt=""></p>
+
+
+            <div style="background-color: rgb(200, 50, 100);color:white">Question 11</div>
+
+            <p>
+                Le sous-menu s’affiche de manière horizontale, alors que l’on souhaite un affichage vertical. Pour cela,
+                il faut utiliser la propriété float.
+
+
+                Complétez le code suivant afin de parvenir à l’affichage désiré.
+            </p>
+            <pre class="prettyprint  "><xmp>/* affichage vertical du sous menu */
+#   _____   _____   _____   _____ {
+    float:   _____   ;
+} </xmp></pre>
+
+            <div style="background-color: rgb(200, 50, 100);color:white">Question Bonus</div>
+
+            Comment faire pour que le menu n’apparaisse pas lors de l’impression ?
+
+
+
+
+
+        </div>
+        <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
+            <p class="w3-right">
+                Powered by <a class="w3-hover-opacity" href="https://www.w3schools.com/w3css/default.asp"
+                    target="_blank" title="W3.CSS">w3.css</a></p>
+        </div>
+
+        <script>
+            $('i[rel="pre"]').replaceWith(function () {
+                return $('<pre><code>' + $(this).html() + '</code></pre>');
+            });
+            var pres = document.querySelectorAll('pre,kbd,blockquote');
+            for (var i = 0; i < pres.length; i++) {
+                pres[i].addEventListener("dblclick", function () {
+                    var selection = getSelection();
+                    var range = document.createRange();
+                    range.selectNodeContents(this);
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                }, false);
+            }
+        </script>
+        <script>
+            function sw() {
+
+                //window.open("temp.html","reponse","width=300,menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes");
+
+                $('<iframe>', {
+                    src: 'sw.html',
+                    id: 'myFrame',
+                    width: '1000px',
+                    height: '800px',
+                    frameborder: 0,
+                    scrolling: 'no'
+                }).fadeIn(800).appendTo('#reponse');
+            }
+        </script>
+        <script>
+            // Script to open and close sidebar
+            function w3_open() {
+                document.getElementById("mySidebar").style.display = "block";
+                document.getElementById("myOverlay").style.display = "block";
+            }
+
+            function w3_close() {
+                document.getElementById("mySidebar").style.display = "none";
+                document.getElementById("myOverlay").style.display = "none";
+            }
+
+            // Modal Image Gallery
+            function onClick(element) {
+                document.getElementById("img01").src = element.src;
+                document.getElementById("modal01").style.display = "block";
+                var captionText = document.getElementById("caption");
+                captionText.innerHTML = element.alt;
+            }
+        </script>
+        <!--    <script type="text/javascript" src="quizlib.1.0.1.min.js">-->
+        <script src="lib/quizlib.js" type="text/javascript"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+        <script src='lib/quizz.js' type='text/javascript'></script>
+        <script src='lib/quizz-seance2.js' type='text/javascript'></script>
+        <script src='lib/order-quizz.js' type='text/javascript'></script>
+</body>
+
+</html>

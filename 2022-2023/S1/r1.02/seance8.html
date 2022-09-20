@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<title>Programmation web</title>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<link href="lib/w3.css" rel="stylesheet">
+<link href="lib/quizz.css" rel="stylesheet">
+<link href="http://www.informatics-tech.com/highlighter/prettify.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
+<script src="http://www.informatics-tech.com/highlighter/prettify.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+<style>
+    h5 {
+        font-weight: bold;
+        margin: 10px;
+    }
+
+    h4,
+    h3 {
+        margin: 15px;
+    }
+
+    .rendu {
+        border: 1px solid black;
+    }
+
+    .quizlib-question-answers ul {
+        list-style: none;
+    }
+
+    li xmp {
+        display: inline;
+    }
+
+    /* CSS Simple Pre Code */
+    pre {
+        background: #333;
+        white-space: pre;
+        word-wrap: break-word;
+        overflow: auto;
+    }
+
+    pre.code {
+        margin: 20px 25px;
+        border-radius: 4px;
+        border: 1px solid #292929;
+        position: relative;
+    }
+
+    pre.code label {
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: 13px;
+        color: #ddd;
+        position: absolute;
+        left: 1px;
+        top: 15px;
+        text-align: center;
+        width: 60px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        pointer-events: none;
+    }
+
+    pre.code code {
+        font-family: "Inconsolata", "Monaco", "Consolas", "Andale Mono", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+        display: block;
+        margin: 0 0 0 60px;
+        padding: 15px 16px 14px;
+        border-left: 1px solid #555;
+        overflow-x: auto;
+        font-size: 13px;
+        line-height: 19px;
+        color: #ddd;
+    }
+
+    /* pre::after {
+        content: "double click to selection";
+        padding: 0;
+        width: auto;
+        height: auto;
+        position: absolute;
+        right: 18px;
+        top: 14px;
+        font-size: 12px;
+        color: #ddd;
+        line-height: 20px;
+        overflow: hidden;
+        -webkit-backface-visibility: hidden;
+        transition: all 0.3s ease;
+    } */
+
+    pre .str {
+        color: #ffffff;
+    }
+
+    pre .typ {
+        color: #ffffff;
+    }
+
+    pre:hover::after {
+        opacity: 0;
+        visibility: visible;
+    }
+
+    pre.code-css code {
+        color: #ffffff;
+         !important
+    }
+
+    pre.code-html code {
+        color: #ffffff;
+    }
+
+    pre.code-javascript code {
+        color: #ffffff;
+    }
+
+    pre.code-jquery code {
+        color: #ffffff;
+    }
+
+
+
+    .redux_quizz input[type=text] {
+        width: 60px;
+    }
+
+    table th {
+        text-align: center;
+    }
+
+    .linenums li {
+        list-style-type: decimal;
+        background: black;
+    }
+
+    .sous-menu {
+        border: 1px solid black;
+    }
+
+    button {
+        margin-bottom: 20px;
+    }
+
+    table tr th,
+    td {
+        border: 1px solid black;
+    }
+
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-family: "Poppins", sans-serif
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+    h1.w3-xxxlarge {
+        margin-top: 15px;
+    }
+
+    .w3-half img {
+        margin-bottom: -6px;
+        margin-top: 16px;
+        opacity: 0.8;
+        cursor: pointer
+    }
+
+    .w3-half img:hover {
+        opacity: 1
+    }
+
+    .ajout-oga {
+        background-color: green;
+    }
+
+    .todo-oga {
+        background-color: red;
+    }
+
+    pre.enLigne {
+        display: inline;
+    }
+
+    .nicho-modif {
+        border-left: Lime 5px solid;
+        padding-left: 5px;
+        background: yellow;
+    }
+
+    tt {
+        background-color: #ffd6cc;
+    }
+
+    /* Keyboard key style */
+    kbd {
+        font-size: 0.7em;
+        border: 1px solid gray;
+        box-shadow: 1px 0 1px 0 #eee, 0 2px 0 2px #ccc, 0 2px 0 3px #444;
+        border-radius: 3px;
+        margin: 2px 3px;
+        padding: 1px 5px;
+    }
+</style>
+
+<body>
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" id="mySidebar"
+        style="z-index:3;width:300px;font-weight:bold;"><br>
+        <a class="w3-button w3-hide-large w3-display-topleft" href="javascript:void(0)" onclick="w3_close()"
+            style="width:100%;font-size:22px">Close Menu</a>
+        <div class="w3-container">
+            <h3 class="w3-padding-64"><b>IUT Info Bordeaux</b></h3>
+        </div>
+        <div class="w3-bar-block ">
+
+
+            
+        </div>
+    </nav>
+
+    <!-- Top menu on small screens -->
+    <header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+        <a class="w3-button w3-red w3-margin-right" href="javascript:void(0)" onclick="w3_open()">&#9776;</a>
+        <span>IUT Info Bdx</span>
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" id="myOverlay" onclick="w3_close()" style="cursor:pointer"
+        title="close side menu"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+        <!-- Header -->
+        <div class="w3-container" id="showcase" style="margin-top:80px">
+            <h1 class="w3-jumbo"><b>Séance&nbsp;8</b> : Intégration </h1>
+            <hr class="w3-round" style="width:50px;border:5px solid red">
+        </div>
+
+
+
+        <!-- Photo grid (modal) -->
+
+
+
+        <!-- Modal for full size images on click-->
+        <div class="w3-modal w3-black" id="modal01" onclick="this.style.display='none'" style="padding-top:0">
+            <span class="w3-button w3-black w3-xxlarge w3-display-topright">&times;</span>
+            <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+                <img class="w3-image" id="img01">
+                <p id="caption"></p>
+            </div>
+        </div>
+
+        <div class="w3-container" id="git" style="margin-top:5px">
+
+
+            <h2 class="comp">Compétences à acquérir lors de cette séance : </h2>
+            <ul>
+                <li>Travailler sur un cas réel d'intégration.</li>
+            </ul>
+
+            <p>
+                Dans les grandes lignes, un projet web suit les étapes suivantes :
+            </p>
+            <ol>
+                <li>Rédaction du cahier des charges</li>
+                <li>Charte graphique - Web Design</li>
+                <li>Mise en pré production : création technique du site et des fonctionnalités, intégration des
+                    graphiques et textes
+                    ...</li>
+                <li>pré-optimisation SEO</li>
+                <li>Formation à l’utilisation de l’administration ( cas d’un site dynamique ) et plus globalement
+                    transfert de compétence
+                    du prestataire au client</li>
+                <li>Mise en ligne officielle du site internet</li>
+                <li>Référencement</li>
+                <li>Suivi, assistance</li>
+            </ol>
+
+            Cet exercice va vous permettre de tester vos capacités à réaliser l’étape 3, c’est-à-dire celle consistant à
+            récupérer le travail du web designer et de fournir une première version HTML/CSS/JS du site. Vous allez devoir coder une page présentant le département informatique.
+        
+        
+            <h3 class="test"> S'auto-évaluer : savez-vous créer une page web avec flex et/ou bootstrap&nbsp? </h3>
+
+            <p>Réalisez l'intégration de la page ci-dessous. </p>
+            <p>
+              <img src="img/seance8/site.png">
+            </p>
+            <p>
+              <video width="1000" height="480" controls>
+                <source src="videos/seance8/video1.m4v" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </p>
+      
+              <p>
+                Toutes les ressources nécessaire sont présentes sur le <a href="https://www.iut.u-bordeaux.fr/info/">site du département</a>
+              </p>
+      
+      
+              <p>Pour réaliser ce site il va falloir lire un peu de documentation. Quelques liens intéressants pouvant vous aider à bien comprendre le code. 
+                <ul>
+                  <li>la classe <a href="https://getbootstrap.com/docs/4.0/components/jumbotron/">jumbotron</a></li>
+                  <li>Unités de mesure <a href="https://connect.adfab.fr/dev/dev-front/unite-de-mesure-css-rem">lien 1</a>, <a href="http://www.pompage.net/traduction/dimensionner-ses-fontes-avec-rem">lien 2</a></li>
+                  <li><a href="https://getbootstrap.com/docs/4.0/utilities/colors/">la gestion des couleurs</a></li>
+                  <li><a href="https://getbootstrap.com/docs/4.0/components/buttons/">les boutons</a></li>
+                  <li>la gestion <a href="https://getbootstrap.com/docs/4.0/utilities/spacing/">simplifiée des espacements</a></li>
+                </ul>
+      
+      
+              </p>
+
+              <p>Pensez également à mesurer la qualité de votre site avec les validator du W3C et le module d'audit de votre navigateur.</p>
+        
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
+        <p class="w3-right">
+            Powered by <a class="w3-hover-opacity" href="https://www.w3schools.com/w3css/default.asp" target="_blank"
+                title="W3.CSS">w3.css</a></p>
+    </div>
+
+    <script>
+        $('i[rel="pre"]').replaceWith(function () {
+            return $('<pre><code>' + $(this).html() + '</code></pre>');
+        });
+        var pres = document.querySelectorAll('pre,kbd,blockquote');
+        for (var i = 0; i < pres.length; i++) {
+            pres[i].addEventListener("dblclick", function () {
+                var selection = getSelection();
+                var range = document.createRange();
+                range.selectNodeContents(this);
+                selection.removeAllRanges();
+                selection.addRange(range);
+            }, false);
+        }
+    </script>
+    <script>
+        function sw() {
+
+            //window.open("temp.html","reponse","width=300,menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes");
+
+            $('<iframe>', {
+                src: 'sw.html',
+                id: 'myFrame',
+                width: '1000px',
+                height: '800px',
+                frameborder: 0,
+                scrolling: 'no'
+            }).fadeIn(800).appendTo('#reponse');
+        }
+    </script>
+    <script>
+        // Script to open and close sidebar
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+
+        // Modal Image Gallery
+        function onClick(element) {
+            document.getElementById("img01").src = element.src;
+            document.getElementById("modal01").style.display = "block";
+            var captionText = document.getElementById("caption");
+            captionText.innerHTML = element.alt;
+        }
+    </script>
+    <!--    <script type="text/javascript" src="quizlib.1.0.1.min.js">-->
+    <script src="lib/quizlib.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src='lib/quizz.js' type='text/javascript'></script>
+    <script src='lib/quizz-seance2.js' type='text/javascript'></script>
+    <script src='lib/order-quizz.js' type='text/javascript'></script>
+
+</body>
+
+</html>

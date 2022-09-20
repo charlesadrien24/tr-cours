@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="sw.css">
+</head>
+<body>
+<!-- ALL CREDIT FOR THE SCROLLING TEXT GOES TO 
+     Craig Buckler
+     http://www.sitepoint.com/css3-starwars-scrolling-text/ 
+
+Blame me for the music via embedded video bit
+-->
+
+<div style="overflow:hidden; position:absolute; left:0; top:0; width:50px; height:25px;">
+  <div style="margin-top:-290px;">
+  <object width="420" height="315">
+    <param name="movie" value="https://www.youtube.com/v/EjMNNpIksaI?version=3&amp;hl=en_US&autoplay=1&amp;autohide=2"></param>
+    <param name="allowFullScreen" value="true"></param>
+    <param name="allowscriptaccess" value="always"></param>
+    <embed src="https://www.youtube.com/v/EjMNNpIksaI?version=3&amp;hl=en_US&autoplay=1&amp;autohide=2" type="application/x-shockwave-flash" width="420" height="315" allowscriptaccess="always" allowfullscreen="true"></embed>
+  </object>
+  </div>
+</div>
+
+<p id="start">Il n'y a pas très longtemps ... dans un navigateur web</p>
+
+<h1>Cours de Web<sub>Réponse à la question sur les priorités</sub></h1>
+
+<div id="titles">
+  <div id="titlecontent">
+
+    <p class="center">EPISODE IV<br />
+      Les priorités entre sélecteurs CSS </p>
+ <p>Dans l'exemple ci-dessous 8 règles entrent en concurrence.</p>
+
+<p>C'est finalement la couleur orange qui est appliquée. </p>
+<p>Voici les poids de chaque sélecteur. Cyan et orange ont le même poids. Du coup c'est le dernier qui est sélectionné</p>
+
+h1 {color :green;} /*0001*/<br>
+.fruit {color:red;}/*0010*/<br>
+h1.fruit{color:yellow;}/*0011*/<br>
+div h1.fruit span {color:blue;}/*0012*/<br>
+<span style="text-align: left; font-size: 50px;">.container .fruit span {color:white;}/*0021*/</span><br>
+<span style="text-align: left; font-size: 50px;">div.container .fruit span {color:cyan;}/*0022*/</span><br>
+<span style="text-align: left; font-size: 50px;">div.container .fruit span {color:orange;}/*0022*/</span><br>
+<span style="text-align: left; font-size: 50px;">.container .fruit span {color:purple;}/*0021*/</span><br>
+
+</p>
+
+   
+<p>N'hésitez pas modifier les sélecteurs ou changer les lignes de places pour observer les priorités changer.</p>
+
+<p class="center" style="font-size:30px">Que le CSS soit avec vous ! </p>
+    <!-- <p class="center">View the source, Luke!</p>
+  
+    <p>Sorry. Couldn't resist it.</p>
+  
+    <p>You're welcome to use this demonstration code in your own sites. Please link back to the original article at:</p>
+ -->
+    <p class="center" style="font-size:30px">Copyright css/hml : <a href="http://www.sitepoint.com/css3-starwars-scrolling-text/">sitepoint.com/<br />css3-starwars-scrolling-text/</a></p>
+
+    <!-- <p>and give me a shout on Twitter <a href="https://twitter.com/craigbuckler">@craigbuckler</a> &ndash; I'd love to see how you use and abuse it!</p>
+
+    <p>(core récupéré sur https://codepen.io/thatbram/pen/KuHsl)</p> -->
+    </div>
+</div>
+<iframe style="visibility:hidden" width="560" height="315" src="https://www.youtube.com/embed/1KAOq7XX2OY" frameborder="0" allowfullscreen></iframe>
+</body>
+</html>

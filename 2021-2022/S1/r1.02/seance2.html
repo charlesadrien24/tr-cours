@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html>
+<title>Programmation web</title>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<link href="lib/w3.css" rel="stylesheet">
+<link href="lib/quizz.css" rel="stylesheet">
+<link href="http://www.informatics-tech.com/highlighter/prettify.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
+<script src="http://www.informatics-tech.com/highlighter/prettify.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+<style>
+    h5 {
+        font-weight: bold;
+        margin: 10px;
+    }
+
+    h4,
+    h3 {
+        margin: 15px;
+    }
+
+    .rendu {
+        border: 1px solid black;
+    }
+
+    .quizlib-question-answers ul {
+        list-style: none;
+    }
+
+    li xmp {
+        display: inline;
+    }
+
+    /* CSS Simple Pre Code */
+    pre {
+        background: #333;
+        white-space: pre;
+        word-wrap: break-word;
+        overflow: auto;
+    }
+
+    pre.code {
+        margin: 20px 25px;
+        border-radius: 4px;
+        border: 1px solid #292929;
+        position: relative;
+    }
+
+    pre.code label {
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: 13px;
+        color: #ddd;
+        position: absolute;
+        left: 1px;
+        top: 15px;
+        text-align: center;
+        width: 60px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        pointer-events: none;
+    }
+
+    pre.code code {
+        font-family: "Inconsolata", "Monaco", "Consolas", "Andale Mono", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+        display: block;
+        margin: 0 0 0 60px;
+        padding: 15px 16px 14px;
+        border-left: 1px solid #555;
+        overflow-x: auto;
+        font-size: 13px;
+        line-height: 19px;
+        color: #ddd;
+    }
+
+    /* pre::after {
+        content: "double click to selection";
+        padding: 0;
+        width: auto;
+        height: auto;
+        position: absolute;
+        right: 18px;
+        top: 14px;
+        font-size: 12px;
+        color: #ddd;
+        line-height: 20px;
+        overflow: hidden;
+        -webkit-backface-visibility: hidden;
+        transition: all 0.3s ease;
+    } */
+
+    pre .str {
+        color: #ffffff;
+    }
+
+    pre .typ {
+        color: #ffffff;
+    }
+
+    pre:hover::after {
+        opacity: 0;
+        visibility: visible;
+    }
+
+    pre.code-css code {
+        color: #ffffff;
+         !important
+    }
+
+    pre.code-html code {
+        color: #ffffff;
+    }
+
+    pre.code-javascript code {
+        color: #ffffff;
+    }
+
+    pre.code-jquery code {
+        color: #ffffff;
+    }
+
+
+
+    .redux_quizz input[type=text] {
+        width: 60px;
+    }
+
+    table th {
+        text-align: center;
+    }
+
+    .linenums li {
+        list-style-type: decimal;
+        background: black;
+    }
+
+    .sous-menu {
+        border: 1px solid black;
+    }
+
+    button {
+        margin-bottom: 20px;
+    }
+
+    table tr th,
+    td {
+        border: 1px solid black;
+    }
+
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-family: "Poppins", sans-serif
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+    h1.w3-xxxlarge {
+        margin-top: 15px;
+    }
+
+    .w3-half img {
+        margin-bottom: -6px;
+        margin-top: 16px;
+        opacity: 0.8;
+        cursor: pointer
+    }
+
+    .w3-half img:hover {
+        opacity: 1
+    }
+
+    .ajout-oga {
+        background-color: green;
+    }
+
+    .todo-oga {
+        background-color: red;
+    }
+
+    pre.enLigne {
+        display: inline;
+    }
+
+    .nicho-modif {
+        border-left: Lime 5px solid;
+        padding-left: 5px;
+        background: yellow;
+    }
+
+    tt {
+        background-color: #ffd6cc;
+    }
+
+    /* Keyboard key style */
+    kbd {
+        font-size: 0.7em;
+        border: 1px solid gray;
+        box-shadow: 1px 0 1px 0 #eee, 0 2px 0 2px #ccc, 0 2px 0 3px #444;
+        border-radius: 3px;
+        margin: 2px 3px;
+        padding: 1px 5px;
+    }
+</style>
+
+<body>
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" id="mySidebar"
+        style="z-index:3;width:300px;font-weight:bold;"><br>
+        <a class="w3-button w3-hide-large w3-display-topleft" href="javascript:void(0)" onclick="w3_close()"
+            style="width:100%;font-size:22px">Close Menu</a>
+        <div class="w3-container">
+            <h3 class="w3-padding-64"><b>IUT Info Bordeaux</b></h3>
+        </div>
+        <div class="w3-bar-block ">
+
+            <a class="w3-bar-item w3-button w3-hover-white" onclick="w3_close()">CSS</a>
+            <div class="w3-bar-block sous-menu">
+                <a class="w3-bar-item w3-button w3-hover-white aqui" href="#structure" onclick="w3_close()"> Sélecteurs
+                    CSS</a>
+                
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Top menu on small screens -->
+    <header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+        <a class="w3-button w3-red w3-margin-right" href="javascript:void(0)" onclick="w3_open()">&#9776;</a>
+        <span>IUT Info Bdx</span>
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" id="myOverlay" onclick="w3_close()" style="cursor:pointer"
+        title="close side menu"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+        <!-- Header -->
+        <div class="w3-container" id="showcase" style="margin-top:80px">
+            <h1 class="w3-jumbo"><b>Séance&nbsp;2</b> : CSS</h1>
+            <hr class="w3-round" style="width:50px;border:5px solid red">
+        </div>
+        <h2>Comment lire ce support de cours ?</h2>
+
+
+        <h3>Des codes couleurs pour mieux s'y retrouver&nbsp;:</h3>
+        <div class="alert alert-info" role="alert">
+            Contenu de cours permettant d'acquérir une compétence.
+        </div>
+        <div class="alert alert-success" role="alert">
+            Exemples permettant d'illustrer des concepts.
+        </div>
+        <div class="alert alert-danger" role="alert">
+            Bloc dans lequel nous mettons en avant un détail important.
+        </div>
+
+        <h3>Des pictogrammes pour identifier ce que vous devez faire&nbsp;:</h3>
+        <ul>
+            <li>
+                <h4 class="comp"> Ce logo précède chaque liste de compétences à acquérir.</h4>
+            </li>
+            <li>
+                <h4 class="aqui"> Ce logo précède une partie du cours (plutôt théorique) détaillant une compétence à
+                    acquérir.</h4>
+            </li>
+            <li>
+                <h4 class="test"> Ce logo indique le début d'une section d'auto-évaluation ou d'exercices.</h4>
+            </li>
+            <!-- <li>
+                <h4 class="question"> Ce logo correspond à une question à laquelle vous devez répondre.</h4>
+            </li> -->
+        </ul>
+
+
+
+
+        <!-- Photo grid (modal) -->
+
+
+
+        <!-- Modal for full size images on click-->
+        <div class="w3-modal w3-black" id="modal01" onclick="this.style.display='none'" style="padding-top:0">
+            <span class="w3-button w3-black w3-xxlarge w3-display-topright">&times;</span>
+            <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+                <img class="w3-image" id="img01">
+                <p id="caption"></p>
+            </div>
+        </div>
+
+        <div class="w3-container" id="git" style="margin-top:75px">
+
+            <hr class="w3-round" style="width:50px;border:5px solid red">
+            <h2 class="comp">Compétences à acquérir lors de la séance 2: </h2>
+            <ul>
+                <li>Connaitre les pricipaux sélecteurs CSS</li>
+                <li>Savoir créer des sélecteurs</li>
+            </ul>
+            <h3 class="aqui" id="structure">Connaitre les pricipaux sélecteurs CSS
+            </h3>
+
+            <div class="alert alert-info" role="alert">
+                <p>
+                    Quelques liens :
+                </p>
+                <ul>
+                    <li><a href="https://www.w3schools.com/cssref/css_selectors.asp">Liste des sélecteurs</a></li>
+                    <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS">Tutoriel mozilla</a></li>
+                </ul>
+
+
+
+
+                Une déclaration CSS peut être mise dans la partie <tr>head</tr> de votre code, ou dans un fichier
+                indépendant (extension <tr>.css</tr> qu'il faut inclure ).
+
+                <pre class="prettyprint  "><xmp><!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Titre de la page</title>
+    <!-- soultion 1 un lien vers une ressource externe de type css -->
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+    /*solution 2 : définir du style CSS dans le html*/
+    </style>
+</head>
+<body>
+    ...
+    <!-- Le reste du contenu -->
+    ...
+</body>
+</html></xmp></pre>
+            </div>
+            <div class="alert alert-info" role="alert">
+                <p> Une déclaration css comporte un sélecteur suivi d’une liste de couples « propriété valeur »:</p>
+
+                <pre class="prettyprint  "><xmp>sélecteur {
+    propriété1 : une valeur ;
+    propriété2 : une valeur ;
+    ...
+    propriétén : une valeur ;
+    }</xmp></pre>
+
+                <p>
+                    En CSS, un sélecteur est donc utilisé pour cibler une(des) partie(s) spécifique(s) d'une page web à
+                    mettre en forme. Afin de pouvoir être précis, CSS est très riche en sélecteurs, des premiers
+                    sélecteurs du CSS1 aux pseudos éléments de CSS3, en attendant les dernières nouveautés promises par
+                    CSS4.
+                </p>
+
+
+                <!-- <div style="background-color: rgb(200, 50, 100);color:white">Question 0 </div>
+                Pour les exercices qui vont suivre, nous vous proposons d’utiliser le code html de la page d’accueil du département Informatique.
+                https://www.iut.u-bordeaux.fr/info/
+                
+                Pour cela, récupérez le source html, supprimez toutes feuilles de styles, insérez une référence à votre propre feuille de style que vous compléterez au fur et à mesure des questions.
+ -->
+            </div>
+
+
+            <div class="alert alert-info" role="alert">
+                <h2>Sélecteurs de balises</h2>
+                <p>CSS n'est pas un langage de programmation, il permet simplement de mettre en forme le contenu de la
+                    page HTML. Si votre sélecteur se résume au nom d'une balide html, alors toutes les balises de ce
+                    type seront sélectionnées et le style décrit entre accolades sera appliqué.</p>
+                <pre class="prettyprint  "><xmp><style>    
+    /*sélectionner toutes les balises p dans le code HTML et mettre le texte en rouge et taille 12px;*/
+p {
+    color : red;
+    font-size : 10px;
+}
+
+/*sélectionner toutes les balises ul et afficher un carré pour chaque item au lieu d'un cercle*/
+ul {
+    list-style: square;
+}
+</style>
+<body>
+    <h1>Titre</h1>
+    <p>paragraphe 1</p>
+    <ul>
+        <li>item 1</li>
+        <li>item 2</li>
+    </ul>
+    <p>paragraphe 2</p>
+</body></xmp></pre>
+
+            </div>
+            <div class="alert alert-success" role="alert">
+                <p>Il est important de savoir manipuler le debugger de votre navigateur. Comme sur la vidéo, testez le
+                    code précédent et modifiez à la volée les valeurs des paramètres.</p>
+                <p>
+                    <video controls src="videos/seance2/video1.m4v" width="80%"></video>
+                </p>
+            </div>
+
+
+            <div class="alert alert-info" role="alert">
+                <h3>Sélecteurs d'id et de class</h3>
+                <p>Le sélecteur <tt>.</tt> permet de sélectionner tous les élements d'une classe donnée. Le sélecteur
+                    <tt>#</tt> sélection l'élément d'un identifiant.</p>
+
+                <pre class="prettyprint  "><xmp><style>    
+/*sélectionner toutes les balises de classe "unArticle" (donc 2 ici)*/
+.unArticle {
+    color : red;
+    font-size : 10px;
+}
+
+/*sélectionner la balise d'id "menu" (donc une seule)*/
+#menu {
+    list-style: square;
+}
+</style>
+<body>
+    <ul id="menu">
+        <li>item 1</li>
+        <li>item 2</li>
+    </ul>
+    <h1>Titre</h1>
+    <p class="unArticle">article 1</p>
+    <p >Publicité !</p>
+    <p class="unArticle">article 2</p>
+    <p >Un autre Publicité !</p>
+    <ul id="footer">
+        <li>item 1</li>
+        <li>item 2</li>
+    </ul>
+    
+    <p>paragraphe 2</p>
+    </body></xmp></pre>
+            </div>
+
+
+            <div class="alert alert-danger" role="alert">
+                <p>Il est possible de spécifier sur quel type de balise le sélecteur de classe est appliqué</p>
+                <pre class="prettyprint  "><xmp><style>    
+    /*sélectionner toutes les balises p de classe "unArticle" (donc 2 ici)*/
+    /*Donc h1, même s'il est de classe article n'est pas sélectionné*/
+    p.unArticle {
+        color : red;
+        font-size : 10px;
+    }
+    </style>
+    <body>
+        <h1 class="unArticle">Titre</h1>
+        <p class="unArticle">article 1</p>
+        <p >Publicité !</p>
+        <p class="unArticle">article 2</p>
+        <p >Un autre Publicité !</p>        
+</body></xmp></pre>
+
+
+
+
+            </div>
+
+
+
+        </div>
+
+        <h3 class="test" id="1.test"> S'auto-évaluer : savez-vous créer des sélecteurs simples ?</h3>
+
+        <p>
+            Pour les exercices qui vont suivre, nous vous proposons d’utiliser le code html de la page d’accueil du <a
+                href="https://www.iut.u-bordeaux.fr/info/"> département Informatique</a>.
+
+
+            Pour cela, récupérez le source html, supprimez toutes feuilles de styles, insérez une référence à votre
+            propre feuille de style que vous compléterez au fur et à mesure des questions.
+
+        </p>
+
+        <p>
+            <ul>
+                <li>Ecrire en rouge le contenu de la (des) balise(s) h1, en fuchsia le contenu de la (des) balise(s) h2.
+                </li>
+                <li>Colorer en orange le contenu de la balise d’identifiant entreprises.</li>
+                <li>Colorer en olive les balises <tr>div</tr> de classe pfblock-subtitle.</li>
+                <li>En faisant une recherche sur le selecteur universel <tt>*</tt>, appliquez une marge de 0 à tous les
+                    éléments.</li>
+
+            </ul>
+        </p>
+
+
+
+        <h2>Des sélecteurs plus évolués</h2>
+        <div class="alert alert-info" role="alert">
+
+
+            <h3>Combiner des sélecteurs</h3>
+
+            <p>Pour appliquer le même style à plusieurs éléments, il est possible de combiner plusieurs sélecteurs en
+                les séparant par une virgule <tr>,</tr>
+            </p>
+
+            <pre class="prettyprint  "><xmp><style>    
+/*sélectionner toutes les balises et toutes les balises h2 et tous le paragraphes de classe "monArticle*/
+h1, h2, p.monArticle {
+    color : red;
+}
+</style>           </xmp></pre>
+
+        </div>
+
+
+        <div class="alert alert-info" role="alert">
+
+
+            <h3>Sélecteurs d'adjacences <tt>X~Y</tt> et <tt>X+Y</tt></h3>
+
+
+            <p>Dans l'exemple ci-dessous :
+                <ul>
+                    <li><tt>div</tt> et <tt>span 5</tt> sont frères directs car ils se suivent et sont de même niveau
+                    </li>
+                    <li>
+                        <tt>span 1</tt>, le paragraphe de classe <tt>paragraphe</tt> et les <tt>span 3</tt> et <tt>span
+                            4</tt> sont frères. Ils ont le même père qui est la balise <tt>div</tt> </li>
+                    <li><tt>p</tt> est le frère direct de <tt>span 1</tt>,
+                        <tt>span 3</tt> est le frère direct de <tt>p</tt>, <tt>span 4</tt> est le frère direct de span
+                        3.
+
+                    </li>
+                    <li><tt>span 2</tt> n'a pas de frère.</li>
+                </ul>
+                <pre class="prettyprint  "><xmp><div>
+    <span> span 1 </span>
+    <p class="paragraphe">
+            <span> span2 </span>
+    </p>
+    <span> span 3 </span>
+    <span> span 4 </span>
+</div>
+<span> span 5 </span> </xmp></pre>
+
+                <p>Le sélecteur <tt>X+Y</tt> sélectionne toutes les balises <tt>Y</tt> frères direct d'une balise
+                    <tt>X</tt> (ils doivent avoir le même père et se suivrent dans le code).</p>
+                <p>Le sélecteur <tt>X~Y</tt> sélectionne toutes les balises <tt>Y</tt> frères indirect d'une balise
+                    <tt>X</tt> (ils doivent avoir le même père mais ne sont pas obligées de se suivrent dans le code).
+                </p>
+            </p>
+        </div>
+
+        <pre class="prettyprint  "><xmp>/*sélectionne toutes les span qui ont un (grand) frère direct de type p */
+p + span {color:red;}/*sélectionne span 3*/
+
+/*sélectionne toutes les span qui ont un (grand) frère direct de type span */
+span + span {color : red;}/*sélectionne span 4*/
+
+/*sélectionne toutes les span qui ont un (grand) frère (mais pas obligatoirement direct) de type p */
+p ~ span {color:red;}/*sélectionne span 3*/
+
+/*sélectionne toutes les span qui ont un (grand) frère (mais pas obligatoirement direct) de type span */
+span ~ span {color : red;}/*sélectionne span 3 et span 4*/ </xmp></pre>
+
+
+
+        <h3 class="test"> S'auto-évaluer : savez-vous créer/lire des sélecteurs d'adjacences ?</h3>
+
+        <div id="quiz-1">
+            <div class="card quizlib-question">
+                <div class="quizlib-question-title">Soit le code
+                    <pre class="prettyprint  "><xmp><ul>
+    <li>a</li>
+    <li>b</li>
+    <li>c</li>
+    <li>d</li>
+</ul>
+<ul>
+    <li>e</li>
+    <li>f</li>
+</ul></xmp></pre>
+                    Et le CSS
+                    <pre class="prettyprint  "><xmp>
+li + li + li{
+    color : red;
+}
+</xmp></pre>
+                    Quelles sont les <tt>li</tt> sélectionnées par ce sélecteur ?
+                </div>
+                <div class="quizlib-question-answers">
+                    <ul>
+                        <li><label><input name="q1" type="checkbox" value="a"> a,b,c,d,e,f</label> </li>
+                        <li><label><input name="q1" type="checkbox" value="b"> b,c,d,f</label></li>
+                        <li><label><input name="q1" type="checkbox" value="c"> c,d,f</label></li>
+                        <li><label><input name="q1" type="checkbox" value="d"> d,f</label></li>
+                        <li><label><input name="q1" type="checkbox" value="e"> c,d</label></li>
+                        <li><label><input name="q1" type="checkbox" value="f"> aucune ligne</label></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card" id="quiz-result">
+                Votre score <span id="quiz-percent"></span>% - <span id="quiz-score"></span>/<span
+                    id="quiz-max-score"></span><br />
+            </div>
+            <!-- Answer Button -->
+            <button onclick="showResults(this.parentNode.id);" type="button">Valider</button>
+        </div>
+
+
+
+        <div id="quiz-2">
+            <div class="card quizlib-question">
+                <div class="quizlib-question-title">Soit le code
+                    <pre class="prettyprint  "><xmp><p>paragaphe 1</p>
+<p>paragraphe 2</p>
+<p>paragraphe 3</p>
+<div>div 1</div>
+<p>paragraphe 4</p>
+<p>paragraphe 5</p>
+<h1>titre 1</h1>
+<p>paragraphe 6</p></xmp></pre>
+                    Et le CSS
+                    <pre class="prettyprint  "><xmp>p + div ~ p{
+    color : red;
+}</xmp></pre>
+                    Quelles sont les paragraphes sélectionnés par ce sélecteur ?
+                </div>
+                <div class="quizlib-question-answers">
+                    <ul>
+                        <li><label><input name="q1" type="checkbox" value="a"> 1,2,3,4,5,6</label> </li>
+                        <li><label><input name="q1" type="checkbox" value="b"> 3,4,5</label></li>
+                        <li><label><input name="q1" type="checkbox" value="c"> 4,5,6</label></li>
+                        <li><label><input name="q1" type="checkbox" value="d"> 4,5</label></li>
+                        <li><label><input name="q1" type="checkbox" value="e"> 4</label></li>
+                        <li><label><input name="q1" type="checkbox" value="f"> aucun</label></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Answer Button -->
+            <button onclick="showResults(this.parentNode.id);" type="button">Valider</button>
+        </div>
+
+
+        <div class="alert alert-info" role="alert">
+            <h3>Sélecteurs de descendance <tt>" "</tt>, <tt>></tt></h3>
+
+            Dans l'exemple ci-dessous :
+            <ul>
+                <li><tt>paragraphe 1</tt> est fils direct de <tt>div1</tt>. <tt>span1</tt> est le fils indirect de
+                    <tt>div1</tt> (c'est son petit-fils)</li>
+                <li><tt>div2</tt> est le fils direct de <tt>div1</tt>. <tt>p</tt> est le fils indirect de <tt>div1</tt>
+                    (c'est son petit-fils). <tt>span2</tt> est le fils indirect de <tt>div1</tt> (son arrière
+                    petit-fils)</li>
+                <li>même chose pour <tt>paragraphe 2</tt> et <tt>span 3</tt></li>
+            </ul>
+
+            <pre class="prettyprint  "><xmp><div id="div1">
+    <p>paragaphe 1 <span> span 1 </span> </p>
+    <div id="div2">
+        <p>paragraphe 2 <span> span 2 </span></p>
+        <p>paragraphe 3 <span> span 3 </span></p>
+    </div>
+</div></xmp></pre>
+
+
+            <p>
+                Le sélecteur <tt>X Y</tt> sélectionne toutes les balises <tt>Y</tt> fils indirect de X (il faut donc que
+                <tt>Y</tt> soit fils ou petit fils ou arrière petit-fils (etc) de X )
+            </p>
+            <p>
+                Le sélecteur <tt>X > Y</tt> sélectionne toutes les balises <tt>Y</tt> fils direct de X (il faut donc que
+                <tt>Y</tt> soit fils de X )
+            </p>
+        </div>
+
+        <h3 class="test"> S'auto-évaluer : savez-vous créer/lire des sélecteurs de descendance ?</h3>
+
+        <div id="quiz-3">
+            <div class="card quizlib-question">
+                <div class="quizlib-question-title">Soit le code
+                    <pre class="prettyprint  "><xmp><div id="monMenu">
+<div id="titre">
+    <p><img src="#" alt="img/picto.png"></p>
+</div>
+<div id="items">
+    <ul>
+        <li>entrée 1</li>
+        <li>
+            entrée 2
+            <ul>
+                <li>entrée 2.1</li>
+                <li>entrée 2.2</li>
+            </ul>
+        </li>
+        <li>entrée 3</li>
+    </ul>
+</div>
+</div></xmp></pre>
+                    Et le CSS
+                    <pre class="prettyprint  "><xmp>#monMenu > li {
+    color : red;
+}</xmp></pre>
+                    Quelles sont les <tt>li</tt> sélectionnées par ce sélecteur ?
+                </div>
+                <div class="quizlib-question-answers">
+                    <ul>
+                        <li><label><input name="q1" type="checkbox" value="a"> 1, 2, 2.1, 2.2, 3 </label> </li>
+                        <li><label><input name="q1" type="checkbox" value="b"> 1, 3</label></li>
+                        <li><label><input name="q1" type="checkbox" value="c"> 1</label></li>
+                        <li><label><input name="q1" type="checkbox" value="d"> 2.1, 2.2</label></li>
+                        <li><label><input name="q1" type="checkbox" value="e"> 2.1</label></li>
+                        <li><label><input name="q1" type="checkbox" value="f"> aucune ligne</label></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Answer Button -->
+            <button onclick="showResults(this.parentNode.id);" type="button">Valider</button>
+        </div>
+
+
+
+        <div id="quiz-4">
+            <div class="card quizlib-question">
+                <div class="quizlib-question-title">Soit le code
+                    <pre class="prettyprint  "><xmp><div id="monMenu">
+<div id="titre">
+    <p><img src="#" alt="img/picto.png"></p>
+</div>
+<div id="items">
+    <ul>
+        <li>entrée 1</li>
+        <li>
+            entrée 2
+            <ul>
+                <li>entrée 2.1</li>
+                <li>entrée 2.2</li>
+            </ul>
+        </li>
+        <li>entrée 3</li>
+    </ul>
+</div>
+</div></xmp></pre>
+                    Et le CSS
+                    <pre class="prettyprint  "><xmp>#monMenu  li {
+    color : red;
+}</xmp></pre>
+                    Quelles sont les <tt>li</tt> sélectionnées par ce sélecteur ?
+                </div>
+                <div class="quizlib-question-answers">
+                    <ul>
+                        <li><label><input name="q1" type="checkbox" value="a"> 1, 2, 2.1, 2.2, 3 </label> </li>
+                        <li><label><input name="q1" type="checkbox" value="b"> 1, 3</label></li>
+                        <li><label><input name="q1" type="checkbox" value="c"> 1</label></li>
+                        <li><label><input name="q1" type="checkbox" value="d"> 2.1, 2.2</label></li>
+                        <li><label><input name="q1" type="checkbox" value="e"> 2.1</label></li>
+                        <li><label><input name="q1" type="checkbox" value="f"> aucune ligne</label></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Answer Button -->
+            <button onclick="showResults(this.parentNode.id);" type="button">Valider</button>
+        </div>
+
+
+
+
+        <div class="alert alert-info" role="alert">
+            <h3>Sélecteur d’attribut <tt>[ ]</tt></h3>
+<p>
+            Chaque élément HTML peut avoir un ou plusieurs attributs. Ces attributs sont des caractéristiques supplémentaires (possédant souvent une plage de valeurs possibles) qui permettent de configurer l’élément ou de préciser son comportement. Par exemple :
+        </p>
+        <pre class="prettyprint  "><xmp><input type="text" required></xmp></pre>
+       <p>
+            <tt>[name]</tt> est  le sélecteur d’attribut qui permet de cibler toutes les balises de la page qui utilisent cet attribut.
+       </p>     
+       <pre class="prettyprint  "><xmp>/*sélectionner tous les input de type text*/
+input[type="text"] {
+    /*attributs/valeurs*/
+    }
+/*sélectionner toutes les ancres possédant un titre et toutes les ancres  dont href contient le terme "IUT"*/
+a[href*="IUT"], a[title] { 
+    background-color: red; 
+}</xmp></pre>
+    <p>
+            Il est possible de cibler suivant tout ou partie de la valeur de l’attribut. Vous pourrez utiliser les symboles <tt>=</tt>, <tt>~=</tt>, <tt>|=</tt>,
+             <tt>^=</tt>, <tt>¤=</tt>, <tt>*=</tt> qui ont chacun une spécificité.
+        </p>
+    </div>
+
+    <div class="alert alert-info" role="alert">
+        <h3>les pseudo-classes et pseudo-éléments <tt>:</tt></h3>
+        <p>
+Une pseudo-classe est un mot-clé qui peut être ajouté à un sélecteur afin d'indiquer l'état spécifique dans lequel l'élément doit être pour être ciblé par la déclaration.  
+La pseudo-classe <tt>:hover</tt>, par exemple, permettra d'appliquer une mise en forme spécifique lorsque l'utilisateur survole l'élément ciblé par le sélecteur (changer la couleur d'un bouton par exemple).  
+</p>
+<p>
+Il existe une trentaine de pseudo-classes : 
+
+<tt> active</tt>, <tt>checked</tt>, <tt>first-child</tt>, <tt>:hover</tt>, ...
+</p>
+<p>
+Les pseudo-éléments CSS vont permettre de modifier l’apparence d’une partie seulement d’un élément HTML, ou encore d’ajouter du contenu au début ou à la fin
+ d'un certain élément HTML**. On peut citer notamment les pseudo-éléments <tt>::first-letter</tt>, <tt>::first-line</tt>, <tt>::before</tt>, <tt>::after</tt>.
+
+ Deux liens utiles pour compélter ce cours : <a href="https://css.developpez.com/tutoriels/">un tuto de développez.com</a>, <a href="https://codepen.io/fosse17/pen/WqaZwy"> des exemples</a> sur <tt>::before</tt> et <tt>::ater</tt>
+
+        </p>
+        </div>
+
+        <div class="alert alert-info" role="alert">
+        <h3>Cascade, héritage et poids des sélecteurs </h3>
+        <h4>Cascade</h4>
+        <p>Le C de CSS signifie cascade.  Comme défini par <a href="https://developer.mozilla.org/fr/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance"> mozilla </a>,
+            la façon dont la cascade se comporte est la clé de la compréhension du CSS. 
+            La cascade des styles signifie que l'ordre d'apparition des règles dans le CSS a une importance ; quand deux règles applicables ont la même spécificité, c'est la dernière déclarée qui sera utilisée pour la mise en forme.
+            Dans l'exemple ci-dessous tous les <tt>h1</tt> seront bleus.
+            <pre class="prettyprint  "><xmp>h1 { 
+    color: red; 
+}
+h1 { 
+    color: blue; 
+} </xmp></pre>                
+</p>
+    </div>
+    <div class="alert alert-info" role="alert">
+    <h4>Héritage</h4>  
+<p>
+    Comme défini par <a href="https://developer.mozilla.org/fr/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance">mozilla </a> : 
+    L'héritage transmet des valeurs de propriétés depuis des éléments parents vers leurs enfants. Certaines , propriétés ne s'héritent pas.
+</p>
+<p>
+    Par exemple, si vous fixez une color et une font-family pour un élément, tout élément contenu dans le premier sera mis en forme avec la même couleur et la même police, à moins qu'on lui ait appliqué directement des règles.
+    
+</p>
+
+<pre class="prettyprint  "><xmp><style>
+body {
+    color: blue;
+}
+span {
+    color: black;
+}
+</style>
+<body>
+    <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur consectetur beatae sunt inventore expedita quod assumenda excepturi laudantium porro voluptas, commodi odio, odit dolore corporis, doloremque officia! Ratione, minus nesciunt!
+    </p>
+    <p>
+        Lorem <span>ipsum</span> dolor, sit amet consectetur adipisicing elit. Consequatur consectetur beatae sunt inventore expedita quod assumenda excepturi laudantium porro voluptas, commodi odio, odit dolore corporis, doloremque officia! Ratione, minus nesciunt!
+    </p>
+</body></xmp></pre>
+
+<p>
+    donne le résultat suivant : 
+</p>
+<p><img src="img/seance2/img1.png" alt=""></p>
+  
+<p>Comme on peut le voir dans le debugger, la balise <tt>p</tt> a hérité de la propriété <tt>color</tt> de <tt>body</tt>, car <tt>p</tt> est fils de <tt>body</tt> et la propriété <tt>color</tt> s'hérite</p>
+<p>La propriété <tt>color</tt> de <tr>span</tr> a été explicitement redéfinie. Cette règle surcharge donc celle héritée via <tt>body</tt> </p>
+<p><img src="img/seance2/img2.png" alt=""></p>
+
+</div>
+    
+
+<div class="alert alert-success" role="alert">
+<h3>Poids des sélecteurs</h3>
+<p>
+Les spécifications CSS proposent une classification des sélecteurs selon un barème de poids sous forme de notation à quatre chiffres :
+</p>
+<ul>
+    <li>Poids a : règle CSS déclarée à l’aide de l’attribut <tt>HTML style=""</tt> au sein de l'élément  </li>
+    <li>Poids b : sélecteur d’identifiant  </li>
+    <li>Poids c : sélecteur de classe, d’attribut (<tt>[]</tt>) ou de pseudo-classes ( <tt>:hover</tt>, <tt>:focus</tt>, <tt>:firstchild</tt>)  </li>
+    <li>Poids d : sélecteurs d'élément (<tt>p</tt>, <tt>div</tt>, <tt>a</tt>, ...) ou de pseudo-élément ( <tt>:first-letter</tt>, <tt>:before</tt>, <tt>:after</tt>, ...)  </li>
+    <li>poids nul : parenté ( > ) ou adjacence (+)</li>
+</ul>
+
+
+Par exemple :
+<pre class="prettyprint  "><xmp>#content  nav li a.on:hover {
+color: red;
+}
+</xmp></pre>
+<p>
+1 ID (#content), 2 classe+pseudo-classe (.on :hover), 3 éléments (nav li a) donne le poids : 123
+</p>
+
+<p>
+Il surpassera ce sélecteur:
+</p>
+
+<pre class="prettyprint  "><xmp>nav.verte li.gras a.on:hover {
+    color: green;
+}
+</xmp></pre>
+<p>
+0 ID, 4 classe+pseudo-classe (.on :hover .verte .gras), 3 éléments (nav li a) donne le poids : 43
+</p>
+
+<p>
+mais pas celui-ci:
+</p>
+<pre class="prettyprint  "><xmp>#content #nav a {
+      color: red;
+    }
+</xmp></pre>
+<p>
+2 ID, 0 classe+pseudo-classe, 1 éléments (a) donne le poids : 201
+</p>
+
+</div>
+<div class="alert alert-danger" role="alert">
+<h3>La déclaration !important** </h3>
+<p>
+L'ajout d'un <tt>!important</tt>, entre la valeur et le <tt>;</tt>
+ permet de surpasser les règles de cascade et de spécificité (pour autant qu'il n'y ait pas d'autres valeurs comportant un <tt>!important</tt> auquel cas, 
+ on retrouve les règles de cascade et spécificités appliquées):
+</p>
+<pre class="prettyprint  "><xmp>
+#content nav a {
+ color: red !important;
+}
+</xmp></pre>
+
+</div>
+<h3 class="test">Savez-vous créer des sélecteurs css ?</h3>
+<div class="alert alert-info" role="alert">
+    <p>Répondez aux 32 questions de cet exercice</p>
+<p><a href="https://flukeout.github.io/"><img src="img/seance2/plate.gif" alt=""></a></p>
+</div>
+
+
+
+</div>
+    
+
+    <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
+        <p class="w3-right">
+            Powered by <a class="w3-hover-opacity" href="https://www.w3schools.com/w3css/default.asp" target="_blank"
+                title="W3.CSS">w3.css</a></p>
+    </div>
+
+    <script>
+        $('i[rel="pre"]').replaceWith(function () {
+            return $('<pre><code>' + $(this).html() + '</code></pre>');
+        });
+        var pres = document.querySelectorAll('pre,kbd,blockquote');
+        for (var i = 0; i < pres.length; i++) {
+            pres[i].addEventListener("dblclick", function () {
+                var selection = getSelection();
+                var range = document.createRange();
+                range.selectNodeContents(this);
+                selection.removeAllRanges();
+                selection.addRange(range);
+            }, false);
+        }
+    </script>
+    <script>
+        // Script to open and close sidebar
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+
+        // Modal Image Gallery
+        function onClick(element) {
+            document.getElementById("img01").src = element.src;
+            document.getElementById("modal01").style.display = "block";
+            var captionText = document.getElementById("caption");
+            captionText.innerHTML = element.alt;
+        }
+    </script>
+    <!--    <script type="text/javascript" src="quizlib.1.0.1.min.js">-->
+    <script src="lib/quizlib.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src='lib/quizz.js' type='text/javascript'></script>
+    <script src='lib/quizz-seance2.js' type='text/javascript'></script>
+    <script src='lib/order-quizz.js' type='text/javascript'></script>
+</body>
+
+</html>

@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html>
+<title>Programmation web</title>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<link href="lib/w3.css" rel="stylesheet">
+<link href="lib/quizz.css" rel="stylesheet">
+<link href="http://www.informatics-tech.com/highlighter/prettify.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
+<script src="http://www.informatics-tech.com/highlighter/prettify.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+<style>
+    h5 {
+        font-weight: bold;
+        margin: 10px;
+    }
+
+    h4,
+    h3 {
+        margin: 15px;
+    }
+
+    .rendu {
+        border: 1px solid black;
+    }
+
+    .quizlib-question-answers ul {
+        list-style: none;
+    }
+
+    li xmp {
+        display: inline;
+    }
+
+    /* CSS Simple Pre Code */
+    pre {
+        background: #333;
+        white-space: pre;
+        word-wrap: break-word;
+        overflow: auto;
+    }
+
+    pre.code {
+        margin: 20px 25px;
+        border-radius: 4px;
+        border: 1px solid #292929;
+        position: relative;
+    }
+
+    pre.code label {
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: 13px;
+        color: #ddd;
+        position: absolute;
+        left: 1px;
+        top: 15px;
+        text-align: center;
+        width: 60px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        pointer-events: none;
+    }
+
+    pre.code code {
+        font-family: "Inconsolata", "Monaco", "Consolas", "Andale Mono", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+        display: block;
+        margin: 0 0 0 60px;
+        padding: 15px 16px 14px;
+        border-left: 1px solid #555;
+        overflow-x: auto;
+        font-size: 13px;
+        line-height: 19px;
+        color: #ddd;
+    }
+
+    /* pre::after {
+        content: "double click to selection";
+        padding: 0;
+        width: auto;
+        height: auto;
+        position: absolute;
+        right: 18px;
+        top: 14px;
+        font-size: 12px;
+        color: #ddd;
+        line-height: 20px;
+        overflow: hidden;
+        -webkit-backface-visibility: hidden;
+        transition: all 0.3s ease;
+    } */
+
+    pre .str {
+        color: #ffffff;
+    }
+
+    pre .typ {
+        color: #ffffff;
+    }
+
+    pre:hover::after {
+        opacity: 0;
+        visibility: visible;
+    }
+
+    pre.code-css code {
+        color: #ffffff;
+         !important
+    }
+
+    pre.code-html code {
+        color: #ffffff;
+    }
+
+    pre.code-javascript code {
+        color: #ffffff;
+    }
+
+    pre.code-jquery code {
+        color: #ffffff;
+    }
+
+
+
+    .redux_quizz input[type=text] {
+        width: 60px;
+    }
+
+    table th {
+        text-align: center;
+    }
+
+    .linenums li {
+        list-style-type: decimal;
+        background: black;
+    }
+
+    .sous-menu {
+        border: 1px solid black;
+    }
+
+    button {
+        margin-bottom: 20px;
+    }
+
+    table tr th,
+    td {
+        border: 1px solid black;
+    }
+
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-family: "Poppins", sans-serif
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+    h1.w3-xxxlarge {
+        margin-top: 15px;
+    }
+
+    .w3-half img {
+        margin-bottom: -6px;
+        margin-top: 16px;
+        opacity: 0.8;
+        cursor: pointer
+    }
+
+    .w3-half img:hover {
+        opacity: 1
+    }
+
+    .ajout-oga {
+        background-color: green;
+    }
+
+    .todo-oga {
+        background-color: red;
+    }
+
+    pre.enLigne {
+        display: inline;
+    }
+
+    .nicho-modif {
+        border-left: Lime 5px solid;
+        padding-left: 5px;
+        background: yellow;
+    }
+
+    tt {
+        background-color: #ffd6cc;
+    }
+
+    /* Keyboard key style */
+    kbd {
+        font-size: 0.7em;
+        border: 1px solid gray;
+        box-shadow: 1px 0 1px 0 #eee, 0 2px 0 2px #ccc, 0 2px 0 3px #444;
+        border-radius: 3px;
+        margin: 2px 3px;
+        padding: 1px 5px;
+    }
+</style>
+
+<body>
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" id="mySidebar"
+        style="z-index:3;width:300px;font-weight:bold;"><br>
+        <a class="w3-button w3-hide-large w3-display-topleft" href="javascript:void(0)" onclick="w3_close()"
+            style="width:100%;font-size:22px">Close Menu</a>
+        <div class="w3-container">
+            <h3 class="w3-padding-64"><b>IUT Info Bordeaux</b></h3>
+        </div>
+        <div class="w3-bar-block ">
+
+
+            <div class="w3-bar-block sous-menu">
+                <a class="w3-bar-item w3-button w3-hover-white aqui" href="#form" onclick="w3_close()">
+                    Formulaires</a>
+                <a class="w3-bar-item w3-button w3-hover-white aqui" href="#texte" onclick="w3_close()"> Mise en forme
+                    textes</a>
+                <a class="w3-bar-item w3-button w3-hover-white aqui" href="#trans" onclick="w3_close()">
+                    Transformations</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Top menu on small screens -->
+    <header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+        <a class="w3-button w3-red w3-margin-right" href="javascript:void(0)" onclick="w3_open()">&#9776;</a>
+        <span>IUT Info Bdx</span>
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" id="myOverlay" onclick="w3_close()" style="cursor:pointer"
+        title="close side menu"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+        <!-- Header -->
+        <div class="w3-container" id="showcase" style="margin-top:80px">
+            <h1 class="w3-jumbo"><b>Séance&nbsp;9</b> : CSS avancé </h1>
+            <hr class="w3-round" style="width:50px;border:5px solid red">
+        </div>
+
+
+
+        <!-- Photo grid (modal) -->
+
+
+
+        <!-- Modal for full size images on click-->
+        <div class="w3-modal w3-black" id="modal01" onclick="this.style.display='none'" style="padding-top:0">
+            <span class="w3-button w3-black w3-xxlarge w3-display-topright">&times;</span>
+            <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+                <img class="w3-image" id="img01">
+                <p id="caption"></p>
+            </div>
+        </div>
+
+        <div class="w3-container" id="git" style="margin-top:5px">
+
+
+            <h2 class="comp">Compétences à acquérir lors de cette séance 9 : </h2>
+            <p>Cette séance vise à vous faire travailler sur les compétences liées à l'utilisation avancée du css
+            </p>
+
+            <ul>
+                <li>Savoir créer des formulaires optimisés et accessibles </li>
+                <li>Savoir mettre en forme de texte</li>
+                <li>Comprendre les css transformation et transition</li>
+
+
+            </ul>
+
+
+
+
+
+
+
+
+
+
+            <h2 class="aqui" id="form">Savoir créer des formulaires optimisés et accessibles</h2>
+
+            <div class="alert alert-info" role="alert">
+
+
+
+
+                <h3>Création d'un formulaire</h3>
+
+                <p>
+                    Dans le grand chantier du html5, une place d’honneur a été réservée aux éléments interactifs et aux
+                    formulaires. Plutôt rustiques avant, les éléments de saisie de la dernière génération se voient
+                    dotés de nouveaux types de champs, de nouvelles fonctions, voire de tests d’expressions régulières
+                    sur leur contenu textuel. En voici quelques-uns :
+                    <ul>
+                        <li><tt>email</tt> : le champ requiert un contenu au format d’adresse électronique</li>
+                        <li><tt>url</tt> : le champ accueille des URL</li>
+                        <li><tt>tel</tt> : accueille des numéros de téléphone</li>
+                        <li><tt>number</tt> : champ acceptant uniquement des caractères numériques</li>
+                        <li><tt>color</tt> : champ prévu pour les chaînes représentant une valeur de couleur</li>
+
+                    </ul>
+                    La syntaxe est similaire à chacune des valeurs. Voici comment symboliser un champ d’adresse
+                    électronique.
+
+                </p>
+
+                <pre class="prettyprint"><xmp><input type ="email" name ="email"></xmp></pre>
+
+
+
+
+
+                <p>
+                    Même si les fonctionnalités de ces éléments demeurent encore assez timides, l’information apportée
+                    par le type offre
+                    la possibilité d’appliquer des mises en forme spécifiques. Vous pouvez par exemple agrémenter les
+                    champs d’adresse
+                    électronique avec un pictogramme caractéristique en ciblant le sélecteur d’attribut.
+                </p>
+
+                <pre
+                    class="prettyprint"><xmp>[type ="email"] {background:url(email.png) left center no-repeat;}</xmp></pre>
+
+
+
+
+                <p>
+                    Chacun des types de champ obéit à une norme qui définit les valeurs acceptées ou rejetées. Ainsi, il
+                    est possible de
+                    vérifier quels éléments sont invalides à l’aide des sélecteurs CSS3 <tt>valid:</tt> et
+                    <tt>invalid:</tt>
+
+
+                    <pre class="prettyprint"><xmp>input[type="email"]:valid{background:green;}</xmp></pre>
+
+                </p>
+
+                <p>
+                    Au cas par cas, certains attributs complémentaires peuvent élargir les fonctionnalités des nouveaux
+                    éléments de
+                    formulaire. Le type <tt>number</tt> accepte par exemple les attributs min,max,step et value.
+                </p>
+                <pre class="prettyprint"><xmp><input type ="number" min="0" max="10" step ="2" value ="6"></xmp></pre>
+
+
+
+
+
+                <p>
+                    Cette ligne permet d’indiquer qu’il s’agit d’un champ de type numérique, que la valeur minimale
+                    acceptée est 0 et celle
+                    max est 10. le step à 2 indique qu’à partir de 0 seules les valeurs 0; 2; 4; 6; 8; 10 sont
+                    acceptées. La valeur par défaut
+                    est 6.
+                </p>
+
+
+                <p>
+
+
+
+
+
+                    <tt>date</tt> : Type permettant d’afficher un contrôle de date
+                </p>
+
+
+                <p>
+
+                    <pre
+                        class="prettyprint"><xmp><input type ="search" results ="10" name ="recherche" placeholder ="rechercher" autofocus autocomplete ="off"></xmp></pre>
+
+                    Cette ligne permet de générer une zone de champ de recherche avec un texte par défaut, le curseur
+                    placé à
+                    l’intérieur de la zone et l’interdiction de l’autocomplétion.
+                </p>
+
+                <p>
+                    <pre class="prettyprint"><xmp><form >
+    <input name ="name" type ="text" placeholder ="champs requis" required >
+    <input type ="submit" value ="GO">
+</form ></xmp></pre>
+
+                    <pre class="prettyprint"><xmp>[required]{border:1px solid orange;}</xmp></pre>
+
+
+
+                    Les champs bénéficiant de cet attribut doivent nécessairement être remplis lors de la soumission du
+                    formulaire, sans quoi la validation est refusée
+                </p>
+            </div>
+
+            <h3 class="test"> S'auto-évaluer : savez-vous créer un formulaire optimisé et accessible ? </h3>
+            <h3>Question 1</h3>
+            <p>Regardez la vidéo ci-dessous et créer le formulaire permettant de reproduire le même comportement. Le
+                bord de couleur rouge indique que le contenu n'est pas valide. Le mot (required) doit s'ajouter
+                automatiquement via le css (regardez la doc de <a
+                    href="https://developer.mozilla.org/fr/docs/Web/CSS/::after">:after</a>)</p>
+            <p><video width="100%" height="280" controls="">
+                    <source src="videos/seance9/formulaire.m4v" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video> </p>
+
+            <div class="alert alert-success" role="alert">
+                <h3>Rendre son formulaire accessible</h3>
+                <p>
+                    Votre formulaire fonctionne, mais est-il de qualité ? Et plus précisément respecte-t-il la norme
+                    RGAA ? Lisez <a href="https://disic.github.io/guide-integrateur/6-formulaires.html">cette page</a>.
+                </p>
+                <p>
+                    A minima, ajoutez un attribut <tt>title</tt> au bouton et, au bon endroit, des balises
+                    <tt>labels</tt> permettant de
+                    relier chaque mot du formulaire (nom, URL, ...)
+                </p>
+                <p>
+                    Mais comment choisir les bons labels ? Vous pouvez vous inspirer des microdata. Ce sont des schémas
+                    permettant d'utiliser des labels parmi une liste prédéfinie (plusieurs thèmes possibles : cinéma,
+                    personnes, ).
+                    Lisez cet <a href="https://schema.org/docs/gs.html">article intéressant</a>. Dès lors que vous
+                    utilisez des labels dans un formulaire, mais surtout quand vous écrivez des données (dont le schéma
+                    a été défini) dans une page, il faut utiliser les microdata.
+                </p>
+                <p>
+                    La navigation est un autre aspect de la qualité d'un site web. Généralement votre formulaire est
+                    nativement navigable au clavier. Par contre il faut faire attention que l'ensemble du site suive un
+                    ordre logique lors des appuis successifs de la touche "tabulation".
+                    Lisez rapidement <a
+                        href="http://www.infowebmaster.fr/128,news-accessibilite-web-navigation-clavier.html">cet
+                        article</a> et <a
+                        href="https://www.accede-web.com/notices/html-css-javascript/12-navigation-clavier/12-2-liens-evitement/">celui-là</a>.
+                    Ils vous donnera des informations sur les bases de la navigation au clavier. Pensez à faire
+                    attention à la navigation au clavier dans votre projet web.
+                </p>
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+        <h2 id="texte" class="aqui">Mise en forme d'un texte</h2>
+
+        <div class="alert alert-info" role="alert">
+
+            <h3>Gérer les dépassements/césures</h3>
+
+
+            <p>
+                Dans un texte de contenu, lorsqu’un mot sans espace ni trait d’union est plus large que la dimension
+                définie pour son
+                parent, le comportement normal consiste à faire déborder le texte au-delà de la largeur normale du
+                cadre, sans retour
+                à la ligne et sans que la dimension du conteneur ne soit affectée. Il est toutefois possible de forcer
+                la césure d’un mot
+                long à l’aide de la propriété CSS <tt>word-wrap</tt> appliquée au parent et qui aura pour effet de
+                couper le mot
+                à un endroit
+                arbitraire afin de provoquer un retour à la ligne.
+            </p>
+
+        </div>
+
+        <h3 class="test"> S'auto-évaluer : Savez-vous gérer les dépassements/césures&nbsp? </h3>
+        <p>
+            <a href="http://plnkr.co/edit/KJXB3l3YlzdRwsYu?open=lib%2Fscript.js" target="_blank">Etudiez le code
+                suivant.</a> Jouez avec les différentes
+            options de <tt>word-wrap</tt> et observez les résultats.
+
+
+        </p>
+
+        <p> <img width="600px" src="img/seance9/q4.png"></p>
+
+        <div class="alert alert-info" role="alert">
+
+            <h3>Mettre en page correctement des blocs de texte</h3>
+
+
+            <p>CSS3 offre la possibilité de présenter un texte sur plusieurs colonnes, à l’instar des journaux papier,
+                via column et ses
+                propriétés dérivées. Ces différentes propriétés peuvent être scindées en trois parties fonctionnelles :
+            </p>
+            <ul>
+                <li> nombre et taille des colonnes :
+                    <ul>
+                        <li> <tt>columns</tt> : nombre de colonnes et éventuellement la largeur de
+                            chaque colonne</li>
+                        <li> <tt>column-min-width</tt> : largeur minimale de chaque colonne</li>
+                        <li> <tt>column-width-policy</tt> : mode d’affichage des colonnes
+                            (flexible, strict ou inherith)</li>
+                    </ul>
+                </li>
+                <li> ce qu’il y a entre les colonnes :
+                    <ul>
+                        <li> <tt>column-gap</tt> : distance entre chaque colonne</li>
+                        <li> <tt>column-rule</tt> : couleur, style et largeur de la séparation
+                            entre colonnes</li>
+                        <li> Enfin une propriété <tt>column-span</tt> pour étendre un élément sur
+                            plusieurs colonnes </li>
+                    </ul>
+                </li>
+
+            </ul>
+
+            <h3>Question 2</h3>
+            <p>
+                Modifiez <a href="http://plnkr.co/edit/F5avTKF5RksxRGDP?open=lib%2Fscript.js&preview"> ce code</a> (en
+                jouant sur les attributs <tt>column-gap</tt>, <tt>columns</tt> et <tt>column-rule</tt>) afin qu'il donne
+                le même visuel que l'image.
+            </p>
+            <p>
+                <img src="img/seance9/columns.png">
+            </p>
+
+        </div>
+        <h3 class="test"> S'auto-évaluer : Savez-vous mettre en forme un texte&nbsp? </h3>
+        <h3>Question 3</h3>
+
+        <p>
+            Créez un code HTML/CSS afin qu'il donne le même visuel que l'image.
+        </p>
+        <p>
+            <img width="700px" src="img/seance9/article.png">
+        </p>
+
+
+
+
+
+        <h2 id="trans" class="aqui">CSS transformations et CSS transition</h2>
+
+        <div class="alert alert-info" role="alert">
+            <p>
+
+                La propriété CSS3 <tt>transform</tt> permet d'appliquer des transformations en deux dimensions sur un
+                élément : rotation, zoom, déformation et perspective.
+            </p>
+        </div>
+        <div class="alert alert-info" role="alert">
+            <h4><tt>scale</tt> : fonction de zoom</h4>
+
+            <p>
+                Cette fonction agrandit ou réduit les dimensions d'un élément selon un ration (&lt; 1 diminue la taille,
+                &gt;1 l'agrandit). La place occupée dans le flux demeure identique (si l'élément est agrandit, ses
+                frères ne seront pas poussés en conséquence). Selon les navigateurs (et la date où vous lisez ces
+                lignes) il est possible que vous deviez utiliser les préfixes classiques afin que la transformation soit
+                interprétable sur la majorité de navigateurs.
+            </p>
+
+
+            <pre class="prettyprint"><xmp>transform: scale(0.5); //réduire de moitié l'élément</xmp></pre>
+
+        </div>
+
+
+        <div class="alert alert-info" role="alert">
+            <h4><tt>rotate</tt> : rotation</h4>
+            <p>
+                Le concept de rotation via la fonction <tt>rotate</tt> dont les valeurs sont exprimées
+                en
+                degrés (<tt>deg</tt>) ou radians (<tt>rad</tt>).
+
+                Ainsi, pour tourner les éléments de 45 degrés dans le sens des aiguilles d'une montre, nous décrirons :
+
+                <pre class="prettyprint"><xmp>transform : rotate(45deg);</xmp></pre>
+            </p>
+        </div>
+        <div class="alert alert-info" role="alert">
+            <h4><tt>skew</tt>, <tt>translate</tt> : modifier les perspectives, translation
+            </h4>
+
+            <p>
+                Le panel des effets de transformation couverts par les spécifications de CSS3 ne se limite pas aux
+                rotations
+                et aux grossissements. Des déformations de toutes sortes et des translations sont également possibles.
+            </p>
+            <p><tt>skew</tt>, modifie la perspective de l'élément en tirant sur ces coins de manière à
+                obtenir au final une forme parallélépipédique. La première valeur concerne l'axe X, la seconde l'axe Y.
+            </p>
+            <pre class="prettyprint"><xmp>transform : skew(-25deg, 10deg);</xmp></pre>
+
+        </div>
+        <div class="alert alert-info" role="alert">
+            <p><tt>translate</tt> opère une translation de l'élément sur les axes Y et X.
+            </p>
+
+            <pre class="prettyprint"><xmp>transform : translate(100px,100px);</xmp></pre>
+
+        </div>
+
+        <div class="alert alert-info" role="alert">
+            <h4>CSS transitions</h4>
+
+            <p>Il est possible de réaliser des transitions (basiques) et donc d'animer le contenu d'une page web.
+
+                Pour définir une nouvelle transition animée, il est nécessaire de préciser au minimum deux coposantes :
+            </p>
+
+            <ul>
+                <li>la (ou les) propriété(s) à animer (<tt>transition-property</tt>)</li>
+                <li>la durée de l'animation (<tt>transition-duration</tt>)</li>
+            </ul>
+
+
+
+            <p>
+                Les deux propriétés minimales nécessaires pour rendre fonctionnelle une transition en CSS3 sont ces deux
+                dernières. Il existe cependant d'autres propriétés CSS spécifiques aux transitions : <tt>
+                    transition-timing-function</tt>, <tt>transition-delay</tt> et la
+                notation raccourcie <tt>transition</tt> qui cumule tous ces aspects.
+            </p>
+
+
+</div>
+<div class="alert alert-info" role="alert">
+            <p>
+                La propriété <tt>transition-property</tt> accepte 3 valeurs : <tt
+                    tt>all</tt>
+                (valeur par défaut) : toutes le propriétés possibles seront animées), <tt
+                    tt>propriete</tt> le
+                nom d'une propriété pouvant être animée, <tt>none</tt> : aucune propriété ne sera
+                animée.
+            </p>
+
+
+            <p>
+                La propriété <tt>transition-timing-function</tt> détermine la fluidité de l'animation.
+                Les
+                mots-clefs sont : <tt>ease</tt> : rapide sur le début et ralenti sur la fin, <tt>linear</tt> (valeur par défaut) : vitesse constante sur toute la durée de
+                l'animation,
+                <tt>ease-in</tt> : lent sur le début et accélère de plus en plus, <tt>ease-out</tt> : rapide sur le début et décélère sur la fin, <tt>ease-in-out</tt> : le départ et la fin sont lents.
+            </p>
+
+            <p>
+                La notation raccourcie <tt>transition :</tt> <tt>transition-property</tt>
+                <tt>transition-duration</tt> <tt>transition-timing-function</tt><tt>transition-delay</tt>; permet de décrire facilement et de manière concise les
+                différentes
+                propriétés en jeu à l'aide d'une seule propriété.
+
+
+
+                <pre class="prettyprint"><xmp>/*Creer une transition d'une seconde de toutes les propriétés d'une image lors de son survol*/
+img{
+    transition : all 1s ease-in;
+} 
+img:hover{
+    width: 400px;
+    transform : rotate(90deg);
+}</xmp></pre>
+            </p>
+
+            <p>une bonne <a
+                    href="https://www.alsacreations.com/tuto/lire/876-transitions-css3-transition-timing-function.html">référence</a>
+                expliquant tout cela</p>
+        </div>
+
+
+
+        <h3 class="test"> S'auto-évaluer : savez-vous créer des animations ? </h3>
+        <h3>Question 4 </h3>
+
+        <p>Complétez l'exemple à <a href="http://plnkr.co/edit/eYY68lXJRfJO8V6uu7Pv?p=preview">l'adresse suivante</a>
+            afin qu'il donne un rendu proche de celui ci-dessous. </p>
+
+
+        <video width="500" height="240" controls>
+            <source src="videos/seance9/transition.m4v" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+
+
+
+        <h3>Question 5 </h3>
+
+        <p>Ecrivez l'ensemble d'un code HTML/CSS afin qu'il donne un rendu proche de celui ci-dessous. </p>
+
+
+        <video width="500" height="240" controls>
+            <source src="videos/seance9/menuSimpson.m4v" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
+        <p class="w3-right">
+            Powered by <a class="w3-hover-opacity" href="https://www.w3schools.com/w3css/default.asp" target="_blank"
+                title="W3.CSS">w3.css</a></p>
+    </div>
+
+    <script>
+        $('i[rel="pre"]').replaceWith(function () {
+            return $('<pre><code>' + $(this).html() + '</code></pre>');
+        });
+        var pres = document.querySelectorAll('pre,kbd,blockquote');
+        for (var i = 0; i < pres.length; i++) {
+            pres[i].addEventListener("dblclick", function () {
+                var selection = getSelection();
+                var range = document.createRange();
+                range.selectNodeContents(this);
+                selection.removeAllRanges();
+                selection.addRange(range);
+            }, false);
+        }
+    </script>
+    <script>
+        function sw() {
+
+            //window.open("temp.html","reponse","width=300,menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes");
+
+            $('<iframe>', {
+                src: 'sw.html',
+                id: 'myFrame',
+                width: '1000px',
+                height: '800px',
+                frameborder: 0,
+                scrolling: 'no'
+            }).fadeIn(800).appendTo('#reponse');
+        }
+    </script>
+    <script>
+        // Script to open and close sidebar
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+
+        // Modal Image Gallery
+        function onClick(element) {
+            document.getElementById("img01").src = element.src;
+            document.getElementById("modal01").style.display = "block";
+            var captionText = document.getElementById("caption");
+            captionText.innerHTML = element.alt;
+        }
+    </script>
+    <!--    <script type="text/javascript" src="quizlib.1.0.1.min.js">-->
+    <script src="lib/quizlib.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src='lib/quizz.js' type='text/javascript'></script>
+    <script src='lib/quizz-seance2.js' type='text/javascript'></script>
+    <script src='lib/order-quizz.js' type='text/javascript'></script>
+
+</body>
+
+</html>

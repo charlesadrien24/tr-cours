@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html>
+<title>Programmation web</title>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<link href="lib/w3.css" rel="stylesheet">
+<link href="lib/quizz.css" rel="stylesheet">
+<link href="http://www.informatics-tech.com/highlighter/prettify.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js' type='text/javascript'></script>
+<script src="http://www.informatics-tech.com/highlighter/prettify.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+<style>
+    h5 {
+        font-weight: bold;
+        margin: 10px;
+    }
+
+    h4,
+    h3 {
+        margin: 15px;
+    }
+
+    .rendu {
+        border: 1px solid black;
+    }
+
+    .quizlib-question-answers ul {
+        list-style: none;
+    }
+
+    li xmp {
+        display: inline;
+    }
+
+    /* CSS Simple Pre Code */
+    pre {
+        background: #333;
+        white-space: pre;
+        word-wrap: break-word;
+        overflow: auto;
+    }
+
+    pre.code {
+        margin: 20px 25px;
+        border-radius: 4px;
+        border: 1px solid #292929;
+        position: relative;
+    }
+
+    pre.code label {
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: 13px;
+        color: #ddd;
+        position: absolute;
+        left: 1px;
+        top: 15px;
+        text-align: center;
+        width: 60px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        pointer-events: none;
+    }
+
+    pre.code code {
+        font-family: "Inconsolata", "Monaco", "Consolas", "Andale Mono", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+        display: block;
+        margin: 0 0 0 60px;
+        padding: 15px 16px 14px;
+        border-left: 1px solid #555;
+        overflow-x: auto;
+        font-size: 13px;
+        line-height: 19px;
+        color: #ddd;
+    }
+
+    /* pre::after {
+        content: "double click to selection";
+        padding: 0;
+        width: auto;
+        height: auto;
+        position: absolute;
+        right: 18px;
+        top: 14px;
+        font-size: 12px;
+        color: #ddd;
+        line-height: 20px;
+        overflow: hidden;
+        -webkit-backface-visibility: hidden;
+        transition: all 0.3s ease;
+    } */
+
+    pre .str {
+        color: #ffffff;
+    }
+
+    pre .typ {
+        color: #ffffff;
+    }
+
+    pre:hover::after {
+        opacity: 0;
+        visibility: visible;
+    }
+
+    pre.code-css code {
+        color: #ffffff;
+         !important
+    }
+
+    pre.code-html code {
+        color: #ffffff;
+    }
+
+    pre.code-javascript code {
+        color: #ffffff;
+    }
+
+    pre.code-jquery code {
+        color: #ffffff;
+    }
+
+
+
+    .redux_quizz input[type=text] {
+        width: 60px;
+    }
+
+    table th {
+        text-align: center;
+    }
+
+    .linenums li {
+        list-style-type: decimal;
+        background: black;
+    }
+
+    .sous-menu {
+        border: 1px solid black;
+    }
+
+    button {
+        margin-bottom: 20px;
+    }
+
+    table tr th,
+    td {
+        border: 1px solid black;
+    }
+
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-family: "Poppins", sans-serif
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+    h1.w3-xxxlarge {
+        margin-top: 15px;
+    }
+
+    .w3-half img {
+        margin-bottom: -6px;
+        margin-top: 16px;
+        opacity: 0.8;
+        cursor: pointer
+    }
+
+    .w3-half img:hover {
+        opacity: 1
+    }
+
+    .ajout-oga {
+        background-color: green;
+    }
+
+    .todo-oga {
+        background-color: red;
+    }
+
+    pre.enLigne {
+        display: inline;
+    }
+
+    .nicho-modif {
+        border-left: Lime 5px solid;
+        padding-left: 5px;
+        background: yellow;
+    }
+
+    tt {
+        background-color: #ffd6cc;
+    }
+
+    /* Keyboard key style */
+    kbd {
+        font-size: 0.7em;
+        border: 1px solid gray;
+        box-shadow: 1px 0 1px 0 #eee, 0 2px 0 2px #ccc, 0 2px 0 3px #444;
+        border-radius: 3px;
+        margin: 2px 3px;
+        padding: 1px 5px;
+    }
+</style>
+
+<body>
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" id="mySidebar"
+        style="z-index:3;width:300px;font-weight:bold;"><br>
+        <a class="w3-button w3-hide-large w3-display-topleft" href="javascript:void(0)" onclick="w3_close()"
+            style="width:100%;font-size:22px">Close Menu</a>
+        <div class="w3-container">
+            <h3 class="w3-padding-64"><b>IUT Info Bordeaux</b></h3>
+        </div>
+        <div class="w3-bar-block ">
+
+
+            <div class="w3-bar-block sous-menu">
+                <a class="w3-bar-item w3-button w3-hover-white aqui" href="#intro" onclick="w3_close()">
+                    Introduction</a>
+                <a class="w3-bar-item w3-button w3-hover-white aqui" href="#media" onclick="w3_close()"> Media
+                    queries</a>
+                <a class="w3-bar-item w3-button w3-hover-white aqui" href="#flex" onclick="w3_close()"> Flex</a>
+
+                <a class="w3-bar-item w3-button w3-hover-white aqui" href="#boot" onclick="w3_close()"> Bootstrap</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Top menu on small screens -->
+    <header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+        <a class="w3-button w3-red w3-margin-right" href="javascript:void(0)" onclick="w3_open()">&#9776;</a>
+        <span>IUT Info Bdx</span>
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" id="myOverlay" onclick="w3_close()" style="cursor:pointer"
+        title="close side menu"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+        <!-- Header -->
+        <div class="w3-container" id="showcase" style="margin-top:80px">
+            <h1 class="w3-jumbo"><b>Séance&nbsp;6&nbsp;et&nbsp;7</b> : Positionnement – les techniques actuelles </h1>
+            <hr class="w3-round" style="width:50px;border:5px solid red">
+        </div>
+
+
+
+        <!-- Photo grid (modal) -->
+
+
+
+        <!-- Modal for full size images on click-->
+        <div class="w3-modal w3-black" id="modal01" onclick="this.style.display='none'" style="padding-top:0">
+            <span class="w3-button w3-black w3-xxlarge w3-display-topright">&times;</span>
+            <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+                <img class="w3-image" id="img01">
+                <p id="caption"></p>
+            </div>
+        </div>
+
+        <div class="w3-container" id="git" style="margin-top:5px">
+
+
+            <h2 class="comp">Compétences à acquérir lors de cette double séance (6 et 7) : </h2>
+            <p>Cette séance vise à vous faire travailler sur les compétences liées à la mise en page en utilisant des
+                techniques modernes.
+            </p>
+
+            <ul>
+                <li>Comprendre les <tt>media Queries</tt></li>
+                <li>Comprendre les bases du modèle de <tt>boîtes flexibles</tt> et créer une mise en page avec</li>
+                <li>Comprendre les bases du framework bootstrap</li>
+
+            </ul>
+
+
+            <h2 id="intro">Introduction</h2>
+            <p>
+                De nombreuses techniques de positionnement existent, parfois anciennes et à proscrire, d’autres moins
+                connues, d’autres encore récentes et « très en vogue ».
+            </p>
+            <p>
+                La propriété CSS <tt>display</tt> propose de nombreuses possibilités, plus de 40 valeurs possibles,
+                chaque
+                valeur définissant le type de boite utilisée pour le rendu de l’élément, du simple inline, ... , au
+                modèle
+                de boite flexible en passant par le modèle tabulaire ou le modèle de grille.
+            </p>
+            <p>
+                La nécessité de disposer d’une technique simple à utiliser, prévisible sur différentes tailles
+                d’appareils (site web adaptatif ou responsive web design) a amené à la définition en CSS3 du modèle à
+                base de boite flexible (Flexbox) aujourd’hui très en vogue que l’on peut directement mettre en œuvre.
+            </p>
+            <p> Une alternative consiste à utiliser des classes CSS prédéfinies par des communautés, fournies dans
+                des fichiers CSS (avec souvent du JavaScript), que l’on peut, sous réserve des licences prévues,
+                utilisées.
+
+                On trouve ainsi aujourd’hui de nombreux « frameworks CSS » tels que :
+            </p>
+
+            <ul>
+                <li>Bootstrap : « The most popular HTML, CCS and JavaScript framework for developing responsive,
+                    mobile first projects on the web”;</li>
+                <li>Foundation : “The most advanced responsive front-end framework in the world”;</li>
+                <li>Bulma : “An open source CSS framework based on Flexbox”;</li>
+                <li>Ulkit: “A lightweight and modular front-end framework for developing fast and powerful web
+                    interfaces”;</li>
+                <li>Semantic UI : “A UI component framework based around useful principles from natural language”;
+                    Ou encore
+                    Clank, Skeleton, KickStart, Kube, PureCSS, KNACSS, GroundworkCSS, Cascade, Jeet, Milligram,…</li>
+            </ul>
+            <p>Mais avant tout, il faut comprendre comment CSS3 permet la création de site web adaptatif.
+            </p>
+            <h2 class="aqui" id="media">Comprendre les <tt>media Queries</tt></h2>
+
+
+
+            <div class="alert alert-info" role="alert">
+                <h2>Contexte</h2>
+                <p>
+                    Comme définit par <a
+                        href="https://www.alsacreations.com/article/lire/930-css3-media-queries.html">alsacréation</a>,
+                    la spécification CSS3 Media Queries définit les techniques pour l'application de feuilles de
+                    styles en fonction des périphériques de consultation utilisés pour du HTML.
+                </p>
+                <p>
+                    Ces bonnes pratiques permettent d'exploiter encore plus les avantages de la séparation du contenu et
+                    de la présentation : l'intérêt est de pouvoir satisfaire des contraintes de dimensions, de
+                    résolutions et d'autres critères variés pour améliorer l'apparence graphique et la lisibilité (voire
+                    l'utilisabilité) d'un site web.
+                </p>
+                <p>
+
+                    Toutes les plateformes sont concernées : navigateurs mobiles et tablettes, écrans à faibles
+                    résolutions, impression, tv, synthèses vocales, plages braille, etc.
+                    L’attribut <tt>media</tt> de la balise <tt>link</tt> ou la directive <tt>@media</tt> d’une feuille
+                    de style CSS
+                    permettent de préciser le contexte d’application des règles de style ;
+                </p>
+                <p>
+
+                    les valeurs possibles sont : <tt>screen</tt> (écran), <tt>handheld</tt> (périphérique mobile de
+                    petite taille), <tt>print</tt>
+                    (impression), <tt>aural</tt> ou <tt>speech</tt> (synthèse vocale), <tt>braille</tt> (plage braille),
+                    <tt>embossed</tt> (imprimante
+                    braille), <tt>projection</tt> (projecteur), <tt>tv</tt> (téléviseur), <tt>tty</tt> (terminal).
+                </p>
+                <p>
+
+                    Pour un contexte, il est possible d’adjoindre un panel de critères plus précis à l'aide de
+                    propriétés et de valeurs numériques, de préfixes <tt>min-</tt> et <tt>max-</tt> pour les critères
+                    numériques ainsi
+                    que de combinaisons multiples de ces mêmes critères. Le but est de cibler plus finement les
+                    périphériques de destination en fonction de leurs capacités intrinsèques.
+                    Parmi les critères, on peut citer :
+                </p>
+
+                <ul>
+                    <li>orientation (orientation du périphérique : portait ou landscape),</li>
+                    <li>résolution (résolution du périphérique en dpi, dppx, ou dpcm),</li>
+                    <li><tt>min-width</tt>, <tt>width</tt> ou <tt>max-width</tt> (dimension en largeur de la zone
+                        d'affichage)</li>
+                    <li><tt>height</tt> (dimension en hauteur de la zone d'affichage)</li>
+                    <li><tt>device-width</tt> (dimension en largeur du périphérique),</li>
+                </ul>
+
+            </div>
+
+
+
+            <div class="alert alert-info" role="alert">
+                <h2>Exemples</h2>
+                <p>
+                    La requête s'effectue au sein du classique élément <tt>link</tt>.
+                </p>
+                <pre
+                    class="prettyprint"><xmp><link rel="stylesheet" media="screen and (width:800px)" href="colors.css"/></xmp></pre>
+
+                <p>Elle peut également prendre place dans une règle @</p>
+
+                <pre class="prettyprint"><xmp>@media screen and (width:800px){...}</xmp></pre>
+
+                <p>Divers opérateur logiques combinent les requêtes : <tt>and</tt> , <tt>only</tt> et <tt>not</tt>.
+                    L'opérateur <tt>ou</tt> n'existe pas (utiliser la virgule).
+
+                    Voici la liste des critères requêtes généralement définis au sein d'une requête de média.
+                    Ajoutons à ces requêtes deux préfixes facultatifs min et max faisant office de "plus petit ou
+                    égal à" ou "plus grand ou égal à".
+                </p>
+
+                <ul></ul>
+                <li><tt>color</tt> : Sans valeur associée, cette requête filtre les
+                    périphériques en couleur. Associée à une valeur, elle indique le nombre de bits de couleurs
+                    du périphérique. </li>
+
+                <pre class="prettyprint"><xmp>(min-color: 4)</xmp></pre>
+
+                <li><tt>width</tt> et <tt class="code">height</tt> : largeur / hauteur de
+                    l'écran (surface rendue donc la fenêtre).</li>
+
+                <pre class="prettyprint"><xmp>(min-width: 800px)</xmp></pre>
+                <li><tt class="code">device-width</tt> et <tt class="code">device-height</tt> : largeur
+                    physique de l'écran (en pixels)</li>
+
+
+                <pre class="prettyprint"><xmp>(max-device-width: 800px)</xmp></pre>
+
+
+
+                <li>Choisit un périphérique tourné dans le sens vertical (<tt>portrait</tt>) ou
+                    horizontal (<tt>lanscape</tt>)</li>
+
+
+                <li> <tt>aspect-ratio</tt> : Format de l'image du périphérique de sortie </li>
+
+
+                <pre class="prettyprint"><xmp>(aspect ratio: 16/9)</xmp></pre>
+
+
+
+
+                <li><tt>resolution</tt> : Résolution de périphérique de sortie</li>
+
+
+                <pre class="prettyprint"><xmp>@media print and (min-resolution: 320 dpi)</xmp></pre>
+
+
+
+                <li><tt>device-pixel-ratio</tt> : densité de pixel du périphérique de sortie.
+                </li>
+
+
+                <pre class="prettyprint"><xmp>(min-device-pixel-ratio: 2)</xmp></pre>
+
+            </div>
+            <h3 class="test"> S'auto-évaluer : savez-vous positionner des éléments dans une page web ?</h3>
+
+            <h3>Exercice 1</h3>
+            <p>Mettons en pratique les bienfaits des Media Queries au sein d'un exercice consistant à adapter une
+                mise en page à la largeur de l'écran. L'objectif à atteindre est de varier d'un affichage en trois
+                colonnes à un affichage sur une colonne si l'écran est réduit ou si le visiteur navigue à l'aide
+                d'un téléphone mobile.
+            </p>
+
+
+            <p>Créez un fichier html dans lequel : le <tt>body</tt> sera constitué d'une seule <tt>div</tt>, l'id de la
+                <tt>div</tt> sera
+                <tt>main</tt>, la div sera composée de 3 paragraphes (avec 3 textes). Ecrivez les bons <tt>@media</tt>
+                permettant d’obtenir le résultat de la vidéo ci-dessous.
+            </p>
+
+
+            <video width="80%" controls>
+                <source src="videos/seance6et7/video1.m4v" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+
+
+
+
+
+            <!-- <pre class="prettyprint  "><xmp>
+            </xmp></pre> -->
+            <h3>Exercice 2</h3>
+
+
+            <p>Créez une page html comportant une balise <tt>nav</tt> suivi d’un paragraphe. Placez dans la partie
+                navigation une balise <tt>ul</tt> comportant 5 <tt>items</tt>.
+            </p>
+            <p>
+                A l’aide de la directive <tt>@media</tt>, faites que les items s’affichent horizontalement pour les
+                largeurs
+                d’affichages d’au moins 768px, verticalement pour les zones d’affichage plus petites, ne s’affichent pas
+                lors de l’impression.
+            </p>
+
+            <video width="80%" controls>
+                <source src="videos/seance6et7/video2.m4v" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+
+        </div>
+        <h2 class="aqui" id="flex" style="margin-top:45px;">Comprendre les bases du modèle de <tt>boîtes
+                flexibles</tt></h2>
+
+
+        <div class="alert alert-info" role="alert">
+
+            <p>Plusieurs passages de ce cours sur flex-box sont extraits des (très bons sites) : <a
+                    href="https://www.alsacreations.com/tuto/lire/1493-css3-flexbox-layout-module.html">Alsacréation</a>,
+                <a
+                    href="https://developer.mozilla.org/fr/docs/Web/CSS/Disposition_flexbox_CSS/Utilisation_des_flexbox_en_CSS">mozilla</a>,
+                <a href="https://la-cascade.io/layout-sur-12-colonnes-avec-flexbox/"> la casccade</a>.
+                Certains passages ci-dessous sont extraits de ces tutos. On y retrouve les définitions des propriétés
+                les plus utiles. Je vous encourage à faire
+                entièrement ces tutos.</p>
+
+        </div>
+
+
+        <div class="alert alert-info" role="alert">
+
+
+            <p>
+                Nous venons de voir le modèle de boîte classique en CSS et ses dispositions de type <tt>block</tt> ou
+                <tt>inline</tt>,
+                sachez que Flexbox CSS3 a été conçu pour étendre ce périmètre en introduisant un nouveau modèle de boîte
+                distinct, que l’on appellera “le Modèle de boîte flexible”.
+
+                Au sein de ce schéma, on ne raisonne plus en <tt>block</tt> ou <tt>inline</tt>, ni même en
+                <tt>float</tt> ou autres types de
+                boîtes “classiques” CSS, mais en “Modèle de boîte flexible”, dont les quatre possibilités principales
+                sont :
+                <ul>
+                    <li>Distribution horizontale ou verticale des éléments, avec passage à la ligne autorisé ou non,
+                    </li>
+                    <li>Alignements et centrages horizontaux et verticaux, justifiés, répartis,</li>
+                    <li>Réorganisation des éléments indépendamment de l’ordre du flux (DOM),</li>
+                    <li>Gestion des espaces disponibles (fluidité).</li>
+                </ul>
+            </p>
+
+
+        </div>
+        <div class="alert alert-info" role="alert">
+            <p>FlexBox (pour Flexible Box) est un mode de mise en page prévoyant une disposition des éléments d’une
+                page de telle sorte que ces éléments possèdent un comportement prévisible lorsqu’ils doivent
+                s’accommoder de différentes tailles d’écrans/appareils. Les points forts :
+            </p>
+            <ol>
+                <li>Distribution des éléments horizontale ou verticale, avec passage à la ligne autorisé ou non,
+                </li>
+                <li>Alignements et centrages horizontaux et verticaux, justifiés, répartis,</li>
+                <li>Réorganisation des éléments indépendamment de l’ordre du flux (DOM),</li>
+                <li>Gestion des espaces disponibles (fluidité).</li>
+            </ol>
+        </div>
+        <div class="alert alert-info" role="alert">
+            <p>Un peu de vocabulaire :
+                <br>
+                <img width="80%" src="img/seance6et7/flex.png">
+            </p>
+
+
+            <h4> 1- Conteneur Flex (Flex Container)</h4>
+            <p>
+                L’élément parent dans lequel chaque élément flex sera contenu. Un conteneur flex est défini
+                lorsque la propriété <tt>display</tt> possède la valeur <tt>flex</tt> ou <tt>inline-flex</tt>.
+            </p>
+            <h4> 2- Élément flex (Flex item)</h4>
+            <p>Chaque enfant d’un conteneur flex devient un élément flex. Le texte directement contenu dans un
+                conteneur flex est englobé dans un élément flex anonyme.</p>
+            <h4>3- Axes</h4>
+            <p>Toute boîte suit deux axes : L’axe principal (main axis) sur lequel les éléments flex se suivent.
+                L’axe secondaire (cross axis) est perpendiculaire à l’axe principal.
+                <ul>
+                    <li> La propriété <tt>flex-direction</tt> établit l’axe principal.</li>
+                    <li> La propriété <tt>justify-content</tt> définit comment les éléments flex sont positionnés
+                        le
+                        long de l’axe principal sur la ligne courante.</li>
+                    <li> La propriété <tt>align-items</tt> définit comment les éléments flex sont positionnés le
+                        long
+                        de l’axe secondaire sur la ligne courante.</li>
+                    <li> La propriété <tt>align-self</tt> définit comment un seul élément flex est aligné sur
+                        l’axe
+                        secondaire et surcharge le comportement par défaut défini par align-items.</li>
+                </ul>
+            </p>
+            <h4>4- Directions</h4>
+            <p>Le début/fin du côté principal et du côté secondaire du conteneur flex décrit l’origine et la
+                fin du flux d’éléments flex. Ils suivent l’axe principal et secondaire du conteneur flex dans le
+                sens établi par writing-mode (gauche-vers-droite, droite-vers-gauche, etc.).
+                <ul>
+                    <li> La propriété <tt>order</tt> ordonne les éléments d’un groupe et détermine quel élément
+                        va
+                        apparaitre en premier.</li>
+                    <li> La propriété <tt>flex-flow</tt> raccourcis les propriétés <tt>flex-direction</tt> et
+                        <tt>flex-wrap</tt> pour
+                        positionner les éléments flex.</li>
+                </ul>
+            </p>
+            <h4>5- Lignes (Lines)</h4>
+
+            <p>Les éléments flex peuvent être positionnés soit sur une seule ligne, soit sur plusieurs lignes
+                via la propriété <tt>flex-wrap</tt>, qui contrôle la direction de l’axe secondaire et la direction
+                dans
+                chaque nouvelle lignes rajoutées.
+            </p>
+            <h4>6- Dimensions</h4>
+            <p>
+                Les termes désignant la hauteur et la largeur des éléments flex sont la taille principale (main
+                size) et la taille secondaire (cross size), qui suivent respectivement l’axe principal et l’axe
+                secondaire du conteneur flex.
+                <ul>
+                    <li> Les propriétés <tt>min-height</tt> et <tt>min-width</tt> ont une valeur initiale de
+                        <tt>auto</tt>.</li>
+                    <li> La propriété flex est un raccourci des propriétés <tt>flex-grow,</tt> <tt>flex-shrink</tt>
+                        et <tt>flex-basis</tt>
+                        pour
+                        établir la flexibilité des éléments flexibles.</li>
+                </ul>
+            </p>
+
+
+
+        </div>
+        <div class="alert alert-info" role="alert">
+            <h3>flex-direction</h3>
+            <p>
+                La distribution, c’est à dire le sens d’affichage horizontal ou vertical des éléments "flex-items" est
+                définie par la propriété flex-direction dont les valeurs peuvent être :
+
+                <ul>
+                    <li><tt>row</tt> (distribution horizontale, valeur par défaut)</li>
+                    <li><tt>row-reverse</tt> (distribution horizontale inversée)</li>
+                    <li><tt>column</tt> (distribution verticale)</li>
+                    <li><tt>column-reverse</tt> (distribution verticale inversée)</li>
+                </ul>
+            </p>
+
+            <h3>flex-wrap</h3>
+            <p>
+                La propriété <tt>flex-wrap</tt> définit si le contenu sera distribué sur une seule ligne (ou colonne
+                selon l’axe principal) ou sur plusieurs lignes. En clair, si les "flex-items" ont le droit de passer à
+                la ligne ou non.
+
+                Les valeurs de flex-wrap sont :
+                <ul>
+                    <li> <tt>nowrap</tt> (les éléments ne passent pas à la ligne, valeur par défaut)</li>
+                    <li><tt>wrap</tt> (les éléments passent à la ligne dans le sens de lecture)</li>
+                    <li><tt>wrap-reverse</tt> (les éléments passent à la ligne dans le sens inverse)</li>
+                </ul>
+            </p>
+
+            <h3>justify-content et align-items</h3>
+            <p>
+                Flexbox propose de gérer très finement les alignements et centrages, en différenciant les deux axes
+                d’affichage de cette manière :
+                <ul>
+                    <li>L’alignement dans l’axe principal est traité via la propriété <tt>justify-content</tt></li>
+
+                    <li> L’alignement dans l’axe secondaire est géré avec <tt>align-items</tt></li>
+                </ul>
+
+
+                Ces deux propriétés s’appliquent au <tt>flex-container</tt>.
+            </p>
+            <p>
+                Axe principal : <tt>justify-content</tt><br />
+
+                Les alignements dans l’axe de lecture principal sont définis à l’aide de la propriété
+                <tt>justify-content</tt>, dont les valeurs possibles sont :
+                <ul>
+                    <li> <tt>flex-start</tt> (éléments positionnés au début du sens de lecture, valeur par défaut)</li>
+                    <li><tt>flex-end</tt> (éléments positionnés à la fin)</li>
+                    <li><tt>center</tt> (position centrale)</li>
+                    <li><tt>space-between</tt> (répartition “justifiée”)</li>
+                    <li><tt>space-around</tt> (variante de répartition “justifiée”)</li>
+                </ul>
+
+            </p>
+
+
+            <p>
+                Dans l’axe secondaire (axe perpendiculaire à l'axe principal), les alignements sont régis via la
+                propriété <tt>align-items</tt>, dont les valeurs sont :
+                <ul>
+                    <li> <tt>flex-start</tt> (au début)</li>
+                    <li><tt>flex-end</tt> (à la fin)</li>
+                    <li><tt>center</tt> (au centre)</li>
+                    <li><tt>baseline</tt> (généralement identique à flex-start)</li>
+                    <li><tt>stretch</tt> (étirés dans l’espace disponible, valeur par défaut)</li>
+                </ul>
+            </p>
+
+            <p>Testez, avec votre enseignant, <a href="http://plnkr.co/edit/w9BJi2FtWt5UELHn4SAN?p=preview">ce code</a>
+                pour comprendre les bases de flex.</p>
+
+            <p>Un guide très bien fait sur flex-box est disponible <a
+                    href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">ici</a>.</p>
+
+        </div>
+        <h3 class="test"> S'auto-évaluer : savez-vous positionner des éléments avec flex ? </h3>
+
+
+        <h2>Exercice 3</h2>
+        <p>Le site <a href="https://flexboxfroggy.com">https://flexboxfroggy.com</a> propose quelques exercices très
+            bien faits pour travailler le flex. Faisons en quelques-uns ensemble puis finissez à la maison.</p>
+        <p><img width="500px" src="img/seance6et7/frog.png"></p>
+
+
+        <h2 class="aqui" style="margin-top:45px;">Comprendre la mécanique de répartition des espaces</h2>
+
+        <div class="alert alert-info" role="alert">
+            <h4>7- Taille minimale d’un élément</h4>
+            <p>
+                La propriété flex-basis détermine la base de flexibilité utilisée comme taille initiale principale pour
+                un élément flexible avant réduction de sa taille ou avant redistribution de l'espace restant dans leur
+                conteneur Flexbox.
+                Testez <a href="https://www.w3schools.com/cssreF/tryit.asp?filename=trycss3_flex-basis">ce code</a> et
+                faites varier flex-basis de <tt>main #div</tt> : <tt>auto</tt> ou <tt>100px</tt> ou un pourcentage.
+                Observez la largeur prise par
+                l'ensemble des boites par rapport à la <tt>div#main</tt> qui fait 300 pixels de large.
+            </p>
+        </div>
+        <div class="alert alert-info" role="alert">
+            <h4>8- Taille d’un élément relativement à celle des ses voisins</h4>
+            <p>
+                La propriété <tt>flex-grow</tt> définit le facteur d'expansion d'un élément flexible. Elle indique la
+                quantité
+                d'espace que l'élément devrait consommer dans un conteneur flexible relativement à la taille des autres
+                éléments du même conteneur. Si tous les éléments voisins possèdent le même facteur d'expansion, ils
+                recevront tous la même part d'espace.
+            </p>
+            <p>
+                Testez ce <a href="http://plnkr.co/edit/kA4tSUkfaDTNcdiFbGHs?p=info">code</a>, faites varier les valeurs
+                de <tt>flex-grow</tt> et observez comment se répartissent les
+                écarts.
+            </p>
+
+
+
+            <p>Toujours avec ce code, entrez un long texte dans le permier item. vous devriez observer que les
+                proportions définies avec <tt>flex-grow</tt> ne sont plus respectées.</p>
+
+
+            Le calcul précis permettant de comprendre comment le rendu est fait est expliqué <a
+                href="https://css-tricks.com/flex-grow-is-weird/"> ici </a>. C'est un peu technique. Surtout observez
+            qu'il est recommandé d'utiliser <tt>flex-grow</tt> avec <tt>flex-basis</tt>
+
+        </div>
+        <div class="alert alert-info" role="alert">
+            <h4>9- Réduire la taille d’un élément relativement à celle de ses voisins</h4>
+            <p>La propriété <tt>flex-shrink</tt> permet de définir comment un item peut rétrécir en
+                fonction des éléments flexibles contenus dans le même conteneur.</p>
+
+            <p>La valeur par défaut est 1 (ce qui signifie que l'item ne rétrécit pas par défaut), et le facteur de
+                rétrécissement est multiplié par le <tt>flex-basis</tt> lorsqu'il distribue l'espace négatif aux items
+                flex.Qu'est-ce que l'espace négatif ? C'est l'espace qui excède la dimension du container principal.
+                Avec <tt>flex-shrink</tt>, on répartit cet espace négatif, en multipliant pour chaque item sa taille
+                initiale
+                par le ratio de <tt>flex-shrink</tt>. Bref, à l'inverse de <tt>flex-grow</tt>, qui sert à répartir de
+                l'espace positif
+                entre les items en permettant leur agrandissement selon certaines proportions, <tt>flex-shrink</tt> sert
+                à
+                répondre à la question : “comment rétrécir de manière ordonnée mes items pour tout faire rentrer
+                dans le container ? (définition issue de <a
+                    href="https://la-cascade.io/flex-shrink/">https://la-cascade.io/flex-shrink/</a>)
+            </p>
+            <p>
+                Pour que pour que <tt>flex-shrink</tt> ait un effet visible, il faut que la somme
+                des tailles par défaut des <tt>flex-items</tt> dépasse du conteneur.
+            </p>
+
+            <p>Ouvrez <a href="http://plnkr.co/edit/xPL6j9fWfXKWjdEuoqoV">ce code</a> et testez les combinaisons
+                suivantes pour les valeurs de <tt>flex-shrink</tt> et retrouvez à quelle image cette combinaison
+                correspond :
+                (0,0), (1,0), (1,1), (1,4).
+
+                <br>
+
+                <img width="800px" src="img/seance6et7/0-0.png"><br>
+                <img width="800px" src="img/seance6et7/1-1.png"><br>
+                <img width="800px" src="img/seance6et7/1-0.png"><br>
+                <img width="800px" src="img/seance6et7/1-4.png"><br>
+
+
+            </p>
+
+
+
+            <p>Je vous encourage à regarder <a
+                    href="https://medium.freecodecamp.org/even-more-about-how-flexbox-works-explained-in-big-colorful-animated-gifs-a5a74812b053">ce
+                    site</a>. Il contient un bon nombre d'animations qui aident à comprendre le comportement du
+                positionnement par flex en fonction de la taille de la page.</p>
+        </div>
+
+        <div class="alert alert-info" role="alert">
+            <h4>10- Tout en 1</h4>
+
+
+            <p>La propriété <tt>flex</tt> est une propriété raccourcie qui définit la capacité d'un élément flexible à
+                modifier ses dimensions afin de remplir l'espace disponible de son conteneur. Les éléments flexibles
+                peuvent être étirés ou réduits pour utiliser un espace proportionnel à leur coefficient de
+                grossissement ou de rétrécissement afin de ne pas dépasser d'un conteneur. Les propriétés détaillées
+                correspondantes à cette propriété raccourcie sont <tt>flex-grow</tt>, <tt>flex-shrink</tt> et
+                <tt>flex-basis</tt></p>
+
+
+            <p><a href="http://plnkr.co/edit/O3EdcgCpyzuX7rerfIGO?p=preview">Ce code</a> contient 7 cas de figure
+                différents. Etudiez chacun d'eux avec votre enseignant.</p>
+
+        </div>
+        <div class="alert alert-info" role="alert">
+            <h4>10 Création de layout avec Flex</h4>
+
+            <p>Regardons ensemble l'exemple <a href="http://plnkr.co/edit/gDYhkqNYeKEuYBnunK5H">cet exemple</a> qui
+                permet de structurer le mise en page.</p>
+
+
+        </div>
+
+
+        <h3 class="test"> S'auto-évaluer : savez-vous utiliser flex pour structurer une page web ?</h3>
+
+        <p>Codez maintenant ce layout en utlisant Flex <br>
+
+            <img src="img/seance6et7/layout.png"> <br>
+
+            sachant que le html est
+
+
+            <pre class="prettyprint"><xmp><nav class="outer-col-1">Nav</nav>
+<div class="outer-col-2">
+    <header>Header</header>
+    <div class="inner-row">
+    <div class="inner-col">
+        <article>Article</article>
+        <footer>Footer</footer>
+    </div>
+    <aside>Aside</aside>
+    </div>
+</div></xmp></pre>
+        </p>
+
+
+
+        <h2 class="aqui" id="boot">Comprendre les fonctionnement de bootstrap</h2>
+
+
+
+        <div class="alert alert-info" role="alert">
+            <p>
+                Bootstrap est un framework open source pour le développement en HTML, CSS et JS. Il permet de réaliser
+                rapidement un prototype de vos idées ou de construire toute votre application grâce aux variables Sass,
+                au système de grille réactif,
+                aux nombreux composants préconstruits et aux puissants plugins basés sur jQuery. (<a
+                    href="https://getbootstrap.com">définition bootstrap</a> )
+            </p>
+
+            <p>
+
+                La version utilisée dans la suite est Bootstrap en version 4.1.1 (Avril 2018). Attention, la version 4
+                comporte des changements importants rendant inopérants de nombreuses classes des versions précédentes.
+                Assurez-vous, que vous consultez bien une documentation correspondant à cette version.
+
+                Il existe de très nombreux tutoriaux sur Bootstrap ; on peut citer par exemple :
+            </p>
+            <ul>
+                <li> <a href="https://www.w3schools.com/bootstrap4/">tutoriel Bootstrap 4</a> avec de nombreux exemples
+                </li>
+                <li> Bootstrap 4 <a href="https://www.youtube.com/watch?v=gm2RCfjXS3s "> Get Started </a></li>
+            </ul>
+
+            <p>Il est impossible ici de passer en revue l'ensemble des fonctionnalités de la V4 de bootstrap. Je vous
+                propose ici de voir l'essentiel.</p>
+        </div>
+
+        <div class="alert alert-info" role="alert">
+            <h4>Intégrer bootstrap à votre code :</h4>
+            <ul>
+                <li>Si vous ne voulez pas télécharger et héberger Bootstrap 4 vous-même, vous pouvez l'inclure à partir
+                    d'un CDN (Content Delivery Network).
+                    <pre
+                        class="prettyprint"><xmp><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"></xmp></pre>
+
+                </li>
+                <li>Pour assurer un bon rendu et un zoom tactile, ajoutez la ligne suivante
+                    <pre
+                        class="prettyprint"><xmp><meta name="viewport" content="width=device-width, initial-scale=1"></xmp></pre>
+                </li>
+            </ul>
+        </div>
+        <div class="alert alert-info" role="alert">
+            <h4>Les container</h4>
+            <p>Un conteneur fixe <tt>container</tt> est un conteneur à largeur fixe. Lorsque vous redimensionnez votre
+                navigateur la taille est prédéfinie. Cela donne l'impression de passer instantanément d'une taille à une
+                autre.</p>
+
+            <p>Un conteneur fixe <tt>container-fuild</tt> est un conteneur qui prend constamment toute la largeur de la
+                page.</p>
+
+            <p>Testez <a href="http://plnkr.co/edit/ayCemzxRSCCe5attVkg9">ce code</a> en faisant varier la largeur de la
+                page pour comprendre le différence.</p>
+        </div>
+
+        <div class="alert alert-info" role="alert">
+
+            <h4>Bootstrap 4 Grid System</h4>
+            <p>
+                Bootstrap repose sur un système de grille permettant de découper un élément de classe row en 12
+                colonnes, colonnes qui peuvent être utilisées seules ou groupées.
+            </p>
+            <p>Pour s’adapter aux différentes tailles d’écran, Bootstrap utilise 5 préfixes de classes :</p>
+
+            <ul>
+                <li><tt>col-</tt> (extra small devices - screen width less than 576px)</li>
+                <li><tt>col-sm-</tt> (small devices - screen width equal to or greater than 576px)</li>
+                <li><tt>col-md- </tt>(medium devices - screen width equal to or greater than 768px)</li>
+                <li><tt>col-lg-</tt> (large devices - screen width equal to or greater than 992px)</li>
+                <li><tt>col-xl- </tt>(xlarge devices - screen width equal to or greater than 1200px)</li>
+            </ul>
+
+
+            <p>
+                Suffixé par une valeur entre 1 et 12, cela permet de préciser la taille occupée par un élément dans la
+                ligne selon une taille d’écran.
+                Par exemple, appliquer `class="col-sm-3 col-lg-2"` permettra à l’élément d’occuper un quart de l’espace
+                de son parent de classe row pour les écrans de taille au moins égale à 576px mais seulement un sixième
+                de l’espace à partir des écrans de taille au moins égale à 992px.
+            </p>
+
+
+            <p>Étudiez <a href="http://plnkr.co/edit/V4n1P8fPADHhOfLjmh0z?p=preview">cet exemple</a>. Observez
+                particulièrement le comportement de la cinquième ligne en fonction de la taille de la
+                fenêtre.
+            </p>
+
+
+
+
+
+
+
+        </div>
+
+        <h3 class="test"> S'auto-évaluer : savez-vous découper une page avec bootstrap ?</h3>
+
+        <p>Codez la page permettant d'obtenir le résultat suivant : </p>
+
+        <p><video width="80%" controls>
+                <source src="videos/seance6et7/video3.m4v" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </p>
+
+
+
+
+        <div class="alert alert-info" role="alert">
+            <h4>Alignement horizontal et vertical</h4>
+
+            <p>
+                Dans cette version de Bootsrap, plusieurs mécaniques utilisent directement flex. C'est le cas de
+                l'alignement.
+                Dans <a href="http://plnkr.co/edit/UlLSVHMFhsuMmgo3OP8q?p=preview">cet exemple</a>, chaque <tt>row</tt>
+                à son attribut <tt>min-height</tt> définit à une taille
+                prédéfinie. Comme pour Flex il est possible de spécifier comment s’alignent les boites. Dans cet exemple
+                vous observerez qu'il n'y a pas de chiffre associé à chaque classe de colonne <tt>
+                    div class="col"</tt>. C'est ce qu'on appelle de "l'auto-layout columns". Bootstrap divise simplement
+                l'espace
+                disponible en partie égales. Plus d'informations <a
+                    href="https://getbootstrap.com/docs/4.3/layout/grid/#auto-layout-columns">ici.</a>
+            </p>
+
+        </div>
+
+
+        <div class="alert alert-info" role="alert">
+
+            <h4>Ré-ordonner les boites.</h4>
+
+            <p>
+                Comme pour flex, il est possible de réordonner les boites en utilisant l'attribut <tt>order-*</tt>.
+                Etudiez <a href="http://plnkr.co/edit/xnGCE5CQCtiqxCQeKAIs?p=preview">ce code</a>.
+            </p>
+
+        </div>
+
+        <div class="alert alert-info" role="alert">
+            <h4>Le Décalage de colonnes</h4>
+
+            <p>
+                Afin de laisser des espaces vides dans les <tt>row</tt>, il est possible de décaler les
+                colonnes dans grille. Pour cela il faut utiliser l'attribut <tt>.offset-md-*</tt> qui
+                indique, selon la largeur de l'écran (ici <tt>md</tt>), de combien de colonnes il faut se décaler avant
+                d'intégrer le nouveau contenu. Etudiez <a href="http://plnkr.co/edit/QesZ20zjyVr2FmrSwzWF?p=preview">ce
+                    code</a>.
+            </p>
+
+        </div>
+        <div class="alert alert-info" role="alert">
+
+            <h4>Les composants bootstrap</h4>
+
+
+            <p>
+                Dans cette version 4, bootstrap augmente encore le nombre de composants "prêts à servir" : boutons,
+                carrousel, formulaires, fenêtres pop, progess bar, ...
+                Ils sont listés <a href="https://getbootstrap.com/docs/4.3/components/alerts/">ici</a>
+            </p>
+
+
+            <p>
+                Une extrêmement utile est le composant <tt>navbar</tt>. Ce composant intègre (entre
+                autre)
+                les classes suivantes permettant de construire "facilement" une barre ne navigation standard. Étudions
+                ensemble <a href="http://plnkr.co/edit/2aIvNLa7DyMmJGyNG3cU?p=preview">cet exemple</a>.
+            </p>
+
+        </div>
+
+        <h3 class="test"> S'auto-évaluer : savez-vous créer une page web avec flex et/ou bootstrap&nbsp? </h3>
+
+       <p>Rendez-vous au prochain TP pour vous auto-évaluer.</p>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px">
+        <p class="w3-right">
+            Powered by <a class="w3-hover-opacity" href="https://www.w3schools.com/w3css/default.asp" target="_blank"
+                title="W3.CSS">w3.css</a></p>
+    </div>
+
+    <script>
+        $('i[rel="pre"]').replaceWith(function () {
+            return $('<pre><code>' + $(this).html() + '</code></pre>');
+        });
+        var pres = document.querySelectorAll('pre,kbd,blockquote');
+        for (var i = 0; i < pres.length; i++) {
+            pres[i].addEventListener("dblclick", function () {
+                var selection = getSelection();
+                var range = document.createRange();
+                range.selectNodeContents(this);
+                selection.removeAllRanges();
+                selection.addRange(range);
+            }, false);
+        }
+    </script>
+    <script>
+        function sw() {
+
+            //window.open("temp.html","reponse","width=300,menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes");
+
+            $('<iframe>', {
+                src: 'sw.html',
+                id: 'myFrame',
+                width: '1000px',
+                height: '800px',
+                frameborder: 0,
+                scrolling: 'no'
+            }).fadeIn(800).appendTo('#reponse');
+        }
+    </script>
+    <script>
+        // Script to open and close sidebar
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+
+        // Modal Image Gallery
+        function onClick(element) {
+            document.getElementById("img01").src = element.src;
+            document.getElementById("modal01").style.display = "block";
+            var captionText = document.getElementById("caption");
+            captionText.innerHTML = element.alt;
+        }
+    </script>
+    <!--    <script type="text/javascript" src="quizlib.1.0.1.min.js">-->
+    <script src="lib/quizlib.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src='lib/quizz.js' type='text/javascript'></script>
+    <script src='lib/quizz-seance2.js' type='text/javascript'></script>
+    <script src='lib/order-quizz.js' type='text/javascript'></script>
+
+</body>
+
+</html>
